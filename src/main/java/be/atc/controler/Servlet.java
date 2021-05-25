@@ -7,16 +7,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "Servlet", value = "/Servlet")
-public class Servlet extends HttpServlet {
+public class  Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("méthode doPost");
 
-        this.getServletContext().getRequestDispatcher( "../views/firstjsp.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( "/views/firstjps.jsp" ).forward( request, response );
     }
 }
