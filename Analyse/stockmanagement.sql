@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3308
--- Généré le :  lun. 24 mai 2021 à 18:04
--- Version du serveur :  8.0.18
--- Version de PHP :  7.3.12
+-- Hôte : 127.0.0.1:3306
+-- Généré le : mar. 25 mai 2021 à 13:25
+-- Version du serveur :  5.7.31
+-- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `stockmanagement`
+-- Base de données : `stockmanagement`
 --
 
 -- --------------------------------------------------------
@@ -47,9 +46,11 @@ CREATE TABLE IF NOT EXISTS `address` (
 
 DROP TABLE IF EXISTS `adress_users`;
 CREATE TABLE IF NOT EXISTS `adress_users` (
+  `ID_Adress_users` int(11) NOT NULL AUTO_INCREMENT,
   `ID_Adress` int(11) NOT NULL,
   `ID_User` int(11) NOT NULL,
   `typeAdress` enum('Private','Professional','billing','') NOT NULL,
+  PRIMARY KEY (`ID_Adress_users`),
   KEY `ID_Adress` (`ID_Adress`),
   KEY `ID_User` (`ID_User`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -140,10 +141,12 @@ CREATE TABLE IF NOT EXISTS `commandsuppliers` (
 
 DROP TABLE IF EXISTS `commandsuppliers_batchs`;
 CREATE TABLE IF NOT EXISTS `commandsuppliers_batchs` (
+  `ID_Commandsuppliers_batchs` int(11) NOT NULL AUTO_INCREMENT,
   `ID_CommandSupplier` int(11) NOT NULL,
   `ID_Batch` int(11) NOT NULL,
   `costPrice` int(11) NOT NULL,
   `lotQuantity` int(11) NOT NULL,
+  PRIMARY KEY (`ID_Commandsuppliers_batchs`),
   KEY `ID_Batch` (`ID_Batch`),
   KEY `ID_CommandSupplier` (`ID_CommandSupplier`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -216,13 +219,15 @@ CREATE TABLE IF NOT EXISTS `orders` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `orders_docuements`
+-- Structure de la table `orders_documents`
 --
 
-DROP TABLE IF EXISTS `orders_docuements`;
-CREATE TABLE IF NOT EXISTS `orders_docuements` (
+DROP TABLE IF EXISTS `orders_documents`;
+CREATE TABLE IF NOT EXISTS `orders_documents` (
+  `ID_Orders_docuements` int(11) NOT NULL AUTO_INCREMENT,
   `ID_Order` int(11) NOT NULL,
   `ID_Document` int(11) NOT NULL,
+  PRIMARY KEY (`ID_Orders_docuements`),
   KEY `ID_Document` (`ID_Document`),
   KEY `ID_Order` (`ID_Order`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -235,11 +240,13 @@ CREATE TABLE IF NOT EXISTS `orders_docuements` (
 
 DROP TABLE IF EXISTS `orders_products`;
 CREATE TABLE IF NOT EXISTS `orders_products` (
+  `ID_Orders_products` int(11) NOT NULL AUTO_INCREMENT,
   `ID_Order` int(11) NOT NULL,
   `ID_Product` int(11) NOT NULL,
   `qteUnits` int(11) NOT NULL,
   `unitPrice` int(11) NOT NULL,
   `deliver` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`ID_Orders_products`),
   KEY `ID_Order` (`ID_Order`),
   KEY `ID_Product` (`ID_Product`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -274,8 +281,10 @@ CREATE TABLE IF NOT EXISTS `products` (
 
 DROP TABLE IF EXISTS `products_categories`;
 CREATE TABLE IF NOT EXISTS `products_categories` (
+  `ID_Products_categories` int(11) NOT NULL AUTO_INCREMENT,
   `ID_Product` int(11) NOT NULL,
   `ID_Category` int(11) NOT NULL,
+  PRIMARY KEY (`ID_Products_categories`),
   KEY `ID_Product` (`ID_Product`),
   KEY `ID_Category` (`ID_Category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -339,85 +348,85 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Contraintes pour la table `address`
 --
 ALTER TABLE `address`
-  ADD CONSTRAINT `address_ibfk_1` FOREIGN KEY (`ID_City`) REFERENCES `cities` (`ID_City`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `address_ibfk_1` FOREIGN KEY (`ID_City`) REFERENCES `cities` (`ID_City`);
 
 --
 -- Contraintes pour la table `adress_users`
 --
 ALTER TABLE `adress_users`
-  ADD CONSTRAINT `adress_users_ibfk_1` FOREIGN KEY (`ID_Adress`) REFERENCES `address` (`ID_Adress`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `adress_users_ibfk_2` FOREIGN KEY (`ID_User`) REFERENCES `users` (`ID_User`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `adress_users_ibfk_1` FOREIGN KEY (`ID_Adress`) REFERENCES `address` (`ID_Adress`),
+  ADD CONSTRAINT `adress_users_ibfk_2` FOREIGN KEY (`ID_User`) REFERENCES `users` (`ID_User`);
 
 --
 -- Contraintes pour la table `batchs`
 --
 ALTER TABLE `batchs`
-  ADD CONSTRAINT `batchs_ibfk_1` FOREIGN KEY (`ID_Products`) REFERENCES `products` (`ID_Product`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `batchs_ibfk_1` FOREIGN KEY (`ID_Products`) REFERENCES `products` (`ID_Product`);
 
 --
 -- Contraintes pour la table `cities`
 --
 ALTER TABLE `cities`
-  ADD CONSTRAINT `cities_ibfk_1` FOREIGN KEY (`ID_Country`) REFERENCES `countries` (`ID_Country`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `cities_ibfk_1` FOREIGN KEY (`ID_Country`) REFERENCES `countries` (`ID_Country`);
 
 --
 -- Contraintes pour la table `commandsuppliers`
 --
 ALTER TABLE `commandsuppliers`
-  ADD CONSTRAINT `commandsuppliers_ibfk_1` FOREIGN KEY (`ID_User`) REFERENCES `users` (`ID_User`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `commandsuppliers_ibfk_2` FOREIGN KEY (`ID_Supplier`) REFERENCES `suppliers` (`ID_Supplier`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `commandsuppliers_ibfk_1` FOREIGN KEY (`ID_User`) REFERENCES `users` (`ID_User`),
+  ADD CONSTRAINT `commandsuppliers_ibfk_2` FOREIGN KEY (`ID_Supplier`) REFERENCES `suppliers` (`ID_Supplier`);
 
 --
 -- Contraintes pour la table `commandsuppliers_batchs`
 --
 ALTER TABLE `commandsuppliers_batchs`
-  ADD CONSTRAINT `commandsuppliers_batchs_ibfk_1` FOREIGN KEY (`ID_Batch`) REFERENCES `batchs` (`ID_Batch`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `commandsuppliers_batchs_ibfk_2` FOREIGN KEY (`ID_CommandSupplier`) REFERENCES `commandsuppliers` (`ID_CommandSuppliers`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `commandsuppliers_batchs_ibfk_1` FOREIGN KEY (`ID_Batch`) REFERENCES `batchs` (`ID_Batch`),
+  ADD CONSTRAINT `commandsuppliers_batchs_ibfk_2` FOREIGN KEY (`ID_CommandSupplier`) REFERENCES `commandsuppliers` (`ID_CommandSuppliers`);
 
 --
 -- Contraintes pour la table `documents`
 --
 ALTER TABLE `documents`
-  ADD CONSTRAINT `documents_ibfk_1` FOREIGN KEY (`ID_DocumentType`) REFERENCES `documenttypes` (`ID_TypeDocument`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `documents_ibfk_1` FOREIGN KEY (`ID_DocumentType`) REFERENCES `documenttypes` (`ID_TypeDocument`);
 
 --
 -- Contraintes pour la table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`Id_User`) REFERENCES `users` (`ID_User`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`Id_User`) REFERENCES `users` (`ID_User`);
 
 --
--- Contraintes pour la table `orders_docuements`
+-- Contraintes pour la table `orders_documents`
 --
-ALTER TABLE `orders_docuements`
-  ADD CONSTRAINT `orders_docuements_ibfk_1` FOREIGN KEY (`ID_Document`) REFERENCES `documents` (`ID_Document`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `orders_docuements_ibfk_2` FOREIGN KEY (`ID_Order`) REFERENCES `orders` (`ID_Order`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `orders_documents`
+  ADD CONSTRAINT `orders_documents_ibfk_1` FOREIGN KEY (`ID_Document`) REFERENCES `documents` (`ID_Document`),
+  ADD CONSTRAINT `orders_documents_ibfk_2` FOREIGN KEY (`ID_Order`) REFERENCES `orders` (`ID_Order`);
 
 --
 -- Contraintes pour la table `orders_products`
 --
 ALTER TABLE `orders_products`
-  ADD CONSTRAINT `orders_products_ibfk_1` FOREIGN KEY (`ID_Order`) REFERENCES `orders` (`ID_Order`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `orders_products_ibfk_2` FOREIGN KEY (`ID_Product`) REFERENCES `products` (`ID_Product`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `orders_products_ibfk_1` FOREIGN KEY (`ID_Order`) REFERENCES `orders` (`ID_Order`),
+  ADD CONSTRAINT `orders_products_ibfk_2` FOREIGN KEY (`ID_Product`) REFERENCES `products` (`ID_Product`);
 
 --
 -- Contraintes pour la table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`ID_Brand`) REFERENCES `brands` (`ID_Brand`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`ID_Brand`) REFERENCES `brands` (`ID_Brand`);
 
 --
 -- Contraintes pour la table `products_categories`
 --
 ALTER TABLE `products_categories`
-  ADD CONSTRAINT `products_categories_ibfk_1` FOREIGN KEY (`ID_Product`) REFERENCES `products` (`ID_Product`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `products_categories_ibfk_2` FOREIGN KEY (`ID_Category`) REFERENCES `categories` (`ID_Categorie`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `products_categories_ibfk_1` FOREIGN KEY (`ID_Product`) REFERENCES `products` (`ID_Product`),
+  ADD CONSTRAINT `products_categories_ibfk_2` FOREIGN KEY (`ID_Category`) REFERENCES `categories` (`ID_Categorie`);
 
 --
 -- Contraintes pour la table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`ID_Role`) REFERENCES `roles` (`ID_Role`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`ID_Role`) REFERENCES `roles` (`ID_Role`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
