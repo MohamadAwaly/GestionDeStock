@@ -15,8 +15,8 @@
 
 <%--    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">--%>
 
-    <script type="text/javascript" src="${pageContext.request.contextPath}/views/js/script.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/views/js/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/script.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.js"></script>
 
     <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
 <%--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--%>
