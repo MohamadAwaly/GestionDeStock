@@ -11,24 +11,14 @@
 <html>
 <head>
     <title>Title</title>
-<%--    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css"/>--%>
-    <%--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--%>
-    <%--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>--%>
-    <%--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"--%>
-    <%--            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"--%>
-    <%--            crossorigin="anonymous"></script>--%>
-    <%--    <script type="text/javascript" src="../js/script.js"></script>--%>
-<%--        <script type="text/javascript" src="../js/jquery-3.5.1.js"></script>--%>
+    <meta charset="utf-8">
+
+
     <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
-    <script href="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script href=" https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-
-<%--    <script src="http://code.jquery.com/jquery-3.5.1.js" type="text/javascript"/>--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 </head>
-
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
@@ -58,11 +48,11 @@
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">Dropdown</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item">Action</a>
-                        <a class="dropdown-item">Another action</a>
-                        <a class="dropdown-item">Something else here</a>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item">Separated link</a>
+                        <a class="dropdown-item" href="#">Separated link</a>
                     </div>
                 </li>
             </ul>
@@ -73,5 +63,12 @@
         </div>
     </div>
 </nav>
+<script>
 
+
+</script>
+<script type="text/javascript" src="../js/script.js"></script>
+<script type="text/javascript" src="../js/jquery-3.5.1.js"></script>
+</body>
+</html>
 

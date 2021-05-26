@@ -10,10 +10,13 @@
 </h1>
 <br/>
 
-<form method="post" action="Servlet">
+<%--<form method="post" action="Servlet">--%>
+<%--    <input type="submit" value="Envoyer le formulaire">--%>
+<%--</form>--%>
+<form method="post" action="home">
+    <h2>Page home</h2>
+    <a href="Servlet">Hello Servlet</a>
     <input type="submit" value="Envoyer le formulaire">
 </form>
-
-<a href="Servlet">Hello Servlet</a>
 </body>
 </html>
