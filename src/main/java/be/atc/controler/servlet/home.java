@@ -7,7 +7,7 @@ import java.io.IOException;
 
 @WebServlet(name = "home", value = "/home")
 public class home extends HttpServlet {
-    public static final String VUE = "/views/jsp/Home.jsp";
+    public static final String VUE = "/views/Home.jsp";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
