@@ -1,5 +1,5 @@
-$(document).ready(function () {
-   $(document).on('click',function (){
-       console.log('test');
-   })
+alert('test');
+console.log('test1');
+$(document).ready(function (){
+   alert('query');
 });
