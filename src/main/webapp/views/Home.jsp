@@ -8,6 +8,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<c:import url="Header.jsp"/>
+<c:import url="header.jsp"/>
 <%--<%@ include file="Header.jsp" %>--%>
 

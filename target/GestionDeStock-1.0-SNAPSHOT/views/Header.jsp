@@ -12,36 +12,12 @@
 <head>
     <title>Title</title>
     <meta charset="utf-8">
-
-<%--    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">--%>
-
-    <script type="text/javascript" src="${pageContext.request.contextPath}/views/js/script.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/views/js/jquery-3.5.1.js"></script>
-
     <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
-<%--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--%>
-<%--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>--%>
-<%--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"--%>
-<%--            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"--%>
-<%--            crossorigin="anonymous"></script>--%>
 
-
-    <%--    <script type="text/javascript" href="${pageContext.request.contextPath}https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--%>
-    <%--    <script type="text/javascript" href="${pageContext.request.contextPath}https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>--%>
-    <%--    <script type="text/javascript" href="${pageContext.request.contextPath}https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>--%>
-
-
-
-    <%--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--%>
-    <%--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>--%>
-    <%--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>--%>
-
-    <%--    <link href="<c:url value="../js/jquery-3.5.1.js" />" rel="stylesheet">--%>
-    <%--    <link href="<c:url value="../js/script.js" />" rel="stylesheet">--%>
-    <%--    <script src="<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" />"></script>--%>
-    <%--    <script src="<c:url value="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" />"></script>--%>
-    <%--    <script src="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" />"></script>--%>
-
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script type="text/javascript" src="../resources/js/script.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -79,6 +55,13 @@
                         <a class="dropdown-item" href="#">Separated link</a>
                     </div>
                 </li>
+                <select>
+                    <option></option>
+                    <option></option>
+                    <option></option>
+                    <option></option>
+                    <option></option>
+                </select>
             </ul>
             <form class="d-flex">
                 <input class="form-control me-sm-2" type="text" placeholder="Search">
@@ -88,8 +71,6 @@
     </div>
 </nav>
 
-<%--<script type="text/javascript" src="../js/script.js"></script>--%>
-<%--<script type="text/javascript" src="../js/jquery-3.5.1.js"></script>--%>
 </body>
 </html>
 
