@@ -9,5 +9,4 @@
 --%>
 
 <c:import url="header.jsp"/>
-<%--<%@ include file="Header.jsp" %>--%>
-
+<c:import url="footer.jsp"/>

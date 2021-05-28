@@ -1,8 +1,5 @@
-// $(document).ready(function (){
-//    $('.dropdown-toggle').on('click',function (){
-//        console.log('jqry');
-//        $(this).dropdown() ;
-//    });
-// });
+$(document).ready(function (){
+    console.log('test');
+});
 
 
