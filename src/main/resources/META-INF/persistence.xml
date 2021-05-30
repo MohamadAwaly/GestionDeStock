@@ -25,7 +25,7 @@
         <class>be.atc.entities.UsersEnt</class>
 
         <properties>
-            <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3308/stockmanagement"/>
+            <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/stockmanagement"/>
             <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
         </properties>
 
