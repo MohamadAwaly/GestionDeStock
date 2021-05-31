@@ -4,6 +4,10 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.0">
     <persistence-unit name="stockmanagement">
+
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>java:comp/env/jdbc/jpa</jta-data-source>
+
         <class>be.atc.entities.AddressEnt</class>
         <class>be.atc.entities.AdressUsersEnt</class>
         <class>be.atc.entities.BatchsEnt</class>
@@ -27,8 +31,8 @@
         <properties>
             <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/stockmanagement"/>
             <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name='javax.persistence.jdbc.user' value='root'/>
-            <property name='javax.persistence.jdbc.password' value=''/>
+            <property name='javax.persistence.jdbc.user' value='Administrateur'/>
+            <property name='javax.persistence.jdbc.password' value='Admin'/>
 
 
 

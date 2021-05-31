@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EntityTest {
-    private static final String                  JPQL_SELECT_PAR_EMAIL = "SELECT u FROM UsersEnt u WHERE u.mail=:email";
-    private static final String                  PARAM_EMAIL           = "email";
+    private static final String                  JPQL_SELECT_USER = "SELECT u FROM UsersEnt u";
     private static final String                  PERSISTENCE_UNIT_NAME = "stockmanagement";
     final static         org.apache.log4j.Logger logger                = org.apache.log4j.Logger
             .getLogger( EntityTest.class );
@@ -25,10 +24,12 @@ public class EntityTest {
         System.out.println("Apres la déclaration");
         try {
             System.out.println("Début du try");
+
             EntityManager em = getEntityManager( PERSISTENCE_UNIT_NAME );
+            System.out.println("em:" + em);
             System.out.println("Déclaration du query");
             Query query = em.createQuery(
-                    "select p from UsersEnt p " );
+                    "select p from UsersEnt p ", UsersEnt.class );
             System.out.println("apres le query");
             System.out.println("Avant la liste");
 
@@ -45,7 +46,7 @@ public class EntityTest {
     private EntityManager getEntityManager( String PERSISTANCE ) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( PERSISTANCE );
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        System.out.println("Connexion ok");
+        logger.log(Level.INFO, "Connexion OK");
         return entityManager;
     }
 }

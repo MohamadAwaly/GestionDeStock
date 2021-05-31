@@ -32,7 +32,7 @@ public class Factory {
             e.printStackTrace();
         }
         Factory instance = new Factory(
-                "jdbc:mysql://localhost:3306/stockManagement", "Administrateur", "Admin"
+                "jdbc:mysql://localhost:3306/stockmanagement", "Administrateur", "Admin"
         );
         return instance;
     }
