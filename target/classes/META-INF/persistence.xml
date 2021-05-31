@@ -25,8 +25,24 @@
         <class>be.atc.entities.UsersEnt</class>
 
         <properties>
-            <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3308/stockmanagement"/>
+            <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/stockmanagement"/>
             <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name='javax.persistence.jdbc.user' value='root'/>
+            <property name='javax.persistence.jdbc.password' value=''/>
+
+            <!--  Optimization #14 - avoid auto flush cost on query execution -->
+            <property name="eclipselink.persistence-context.flush-mode" value="commit"/>
+            <property name="eclipselink.cache.shared.default" value="false"/>
+
+            <property name="eclipselink.logging.level" value="FINEST"/>
+
+            <property name="eclipselink.connection-pool.default.initial" value="1"/>
+            <property name="eclipselink.connection-pool.node2.min" value="16"/>
+            <property name="eclipselink.connection-pool.node2.max" value="16"/>
+            <property name="eclipselink.connection-pool.node2.wait" value="300"/>
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+
         </properties>
 
     </persistence-unit>

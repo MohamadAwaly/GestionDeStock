@@ -20,13 +20,20 @@ public class EntityTest {
     // Injection du manager, qui s'occupe de la connexion avec la BDD
     //@PersistenceContext( unitName = "UsersEnt" )
     public List<String> listDesPersonnes() {
+        System.out.println("Début de la méthode");
         List<String> list = new ArrayList<>();
+        System.out.println("Apres la déclaration");
         try {
+            System.out.println("Début du try");
             EntityManager em = getEntityManager( PERSISTENCE_UNIT_NAME );
+            System.out.println("Déclaration du query");
             Query query = em.createQuery(
                     "select p from UsersEnt p " );
+            System.out.println("apres le query");
+            System.out.println("Avant la liste");
 
             list = query.getResultList();
+            System.out.println("apres la liste");
 
         } catch ( Exception e ) {
             System.out.println( "Erreur dans l'entityTest" );
@@ -38,7 +45,7 @@ public class EntityTest {
     private EntityManager getEntityManager( String PERSISTANCE ) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( PERSISTANCE );
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-
+        System.out.println("Connexion ok");
         return entityManager;
     }
 }

@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <c:import url="header.jsp"/>
+<p>Page de test de connexion avec la DB lister les utilisateurs</p>
 <p class="test">List of Users</p>
 
 <table class="Users" border="1px solid black">
