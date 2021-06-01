@@ -1,7 +1,5 @@
 package be.atc.controler.dao;
 
-import be.atc.entities.UsersEnt;
-
 import javax.persistence.*;
 
 import be.atc.entities.UsersEnt;
@@ -17,15 +15,15 @@ public class EntityTest {
             .getLogger( EntityTest.class );
 
     // Injection du manager, qui s'occupe de la connexion avec la BDD
-    //@PersistenceContext( unitName = "UsersEnt" )
+    @PersistenceContext( unitName = "UsersEnt" )
     public List<String> listDesPersonnes() {
         System.out.println("Début de la méthode");
         List<String> list = new ArrayList<>();
         System.out.println("Apres la déclaration");
         try {
             System.out.println("Début du try");
-
             EntityManager em = getEntityManager( PERSISTENCE_UNIT_NAME );
+
             System.out.println("em:" + em);
             System.out.println("Déclaration du query");
             Query query = em.createQuery(
@@ -37,15 +35,15 @@ public class EntityTest {
             System.out.println("apres la liste");
 
         } catch ( Exception e ) {
-            System.out.println( "Erreur dans l'entityTest" );
+            System.out.println( "Erreur dans l'entityTest" + e.getMessage() );
         }
         return list;
-
     }
-
     private EntityManager getEntityManager( String PERSISTANCE ) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( PERSISTANCE );
+        logger.log(Level.INFO,"entityManagerFactory: " + entityManagerFactory);
         EntityManager entityManager = entityManagerFactory.createEntityManager();
+        logger.log(Level.INFO,"entityManager: " + entityManager);
         logger.log(Level.INFO, "Connexion OK");
         return entityManager;
     }

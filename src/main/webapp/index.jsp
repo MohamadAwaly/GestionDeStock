@@ -12,7 +12,7 @@
 <div class="wrapper fadeInDown">
     <div id="formContent">
         <div class="fadeIn first">
-            <img src="./resources/pictures/logo.png" id="icon" alt="User Icon" />
+            <img src="./resources/pictures/Logo.png" id="icon" alt="User Icon" />
         </div>
         <form method="post" action="home">
             <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">

@@ -33,10 +33,8 @@ public class SuppliersEnt {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         SuppliersEnt that = (SuppliersEnt) o;
         return idSupplier == that.idSupplier && Objects.equals(name, that.name);
     }
@@ -51,8 +49,7 @@ public class SuppliersEnt {
         return commandsuppliersByIdSupplier;
     }
 
-    public void setCommandsuppliersByIdSupplier(
-            Collection<CommandsuppliersEnt> commandsuppliersByIdSupplier) {
+    public void setCommandsuppliersByIdSupplier(Collection<CommandsuppliersEnt> commandsuppliersByIdSupplier) {
         this.commandsuppliersByIdSupplier = commandsuppliersByIdSupplier;
     }
 }

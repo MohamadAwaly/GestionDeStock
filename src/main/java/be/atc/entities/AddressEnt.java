@@ -4,7 +4,10 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity @Table( name = "address", schema = "stockmanagement", catalog = "" ) public class AddressEnt {
+@Entity
+@Table(name = "address", schema = "stockmanagement")
+public class AddressEnt {
+
     private int idAdress;
     private int idCity;
     private String street;
@@ -13,73 +16,85 @@ import java.util.Objects;
     private CitiesEnt citiesByIdCity;
     private Collection<AdressUsersEnt> adressUsersByIdAdress;
 
-    @Id @Column( name = "ID_Adress", nullable = false ) public int getIdAdress() {
+    @Id
+    @Column(name = "ID_Adress", nullable = false)
+    public int getIdAdress() {
         return idAdress;
     }
 
-    public void setIdAdress( int idAdress ) {
+    public void setIdAdress(int idAdress) {
         this.idAdress = idAdress;
     }
 
-    @Basic @Column( name = "ID_City", nullable = false ) public int getIdCity() {
+    @Basic
+    @Column(name = "ID_City", nullable = false)
+    public int getIdCity() {
         return idCity;
     }
 
-    public void setIdCity( int idCity ) {
+    public void setIdCity(int idCity) {
         this.idCity = idCity;
     }
 
-    @Basic @Column( name = "street", nullable = false, length = 255 ) public String getStreet() {
+    @Basic
+    @Column(name = "street", nullable = false, length = 255)
+    public String getStreet() {
         return street;
     }
 
-    public void setStreet( String street ) {
+    public void setStreet(String street) {
         this.street = street;
     }
 
-    @Basic @Column( name = "number", nullable = false ) public int getNumber() {
+    @Basic
+    @Column(name = "number", nullable = false)
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber( int number ) {
+    public void setNumber(int number) {
         this.number = number;
     }
 
-    @Basic @Column( name = "box", nullable = true ) public Integer getBox() {
+    @Basic
+    @Column(name = "box", nullable = true)
+    public Integer getBox() {
         return box;
     }
 
-    public void setBox( Integer box ) {
+    public void setBox(Integer box) {
         this.box = box;
     }
 
-    @Override public boolean equals( Object o ) {
-        if ( this == o )
-            return true;
-        if ( o == null || getClass() != o.getClass() )
-            return false;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         AddressEnt that = (AddressEnt) o;
-        return idAdress == that.idAdress && idCity == that.idCity && number == that.number && Objects
-                .equals( street, that.street ) && Objects.equals( box, that.box );
+        return idAdress == that.idAdress && idCity == that.idCity && number == that.number && Objects.equals(street, that.street) && Objects.equals(box, that.box);
     }
 
-    @Override public int hashCode() {
-        return Objects.hash( idAdress, idCity, street, number, box );
+    @Override
+    public int hashCode() {
+        return Objects.hash(idAdress, idCity, street, number, box);
     }
 
-    @ManyToOne @JoinColumn( name = "ID_City", referencedColumnName = "ID_City", nullable = false ) public CitiesEnt getCitiesByIdCity() {
+    @ManyToOne
+    @JoinColumn(name = "ID_City", referencedColumnName = "ID_City", nullable = false)
+    public CitiesEnt getCitiesByIdCity() {
         return citiesByIdCity;
     }
 
-    public void setCitiesByIdCity( CitiesEnt citiesByIdCity ) {
+    public void setCitiesByIdCity(CitiesEnt citiesByIdCity) {
         this.citiesByIdCity = citiesByIdCity;
     }
 
-    @OneToMany( mappedBy = "addressByIdAdress" ) public Collection<AdressUsersEnt> getAdressUsersByIdAdress() {
+    @OneToMany(mappedBy = "addressByIdAdress")
+    public Collection<AdressUsersEnt> getAdressUsersByIdAdress() {
         return adressUsersByIdAdress;
     }
 
-    public void setAdressUsersByIdAdress( Collection<AdressUsersEnt> adressUsersByIdAdress ) {
+    public void setAdressUsersByIdAdress(Collection<AdressUsersEnt> adressUsersByIdAdress) {
         this.adressUsersByIdAdress = adressUsersByIdAdress;
     }
 }

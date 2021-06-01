@@ -1,5 +1,8 @@
 package be.atc.controler.connexion;
 
+import be.atc.controler.servlet.Servlet2Test;
+import org.apache.log4j.Level;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,6 +12,8 @@ import java.sql.SQLException;
  */
 
 public class Factory {
+    final static         org.apache.log4j.Logger logger                = org.apache.log4j.Logger
+            .getLogger( Factory.class );
     private String url;
     private String username;
     private String password;

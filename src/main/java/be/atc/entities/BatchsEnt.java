@@ -4,7 +4,10 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity @Table( name = "batchs", schema = "stockmanagement", catalog = "" ) public class BatchsEnt {
+@Entity
+@Table(name = "batchs", schema = "stockmanagement")
+public class BatchsEnt {
+
     private int idBatch;
     private int idProducts;
     private int quantity;
@@ -13,74 +16,85 @@ import java.util.Objects;
     private ProductsEnt productsByIdProducts;
     private Collection<CommandsuppliersBatchsEnt> commandsuppliersBatchsByIdBatch;
 
-    @Id @Column( name = "ID_Batch", nullable = false ) public int getIdBatch() {
+    @Id
+    @Column(name = "ID_Batch", nullable = false)
+    public int getIdBatch() {
         return idBatch;
     }
 
-    public void setIdBatch( int idBatch ) {
+    public void setIdBatch(int idBatch) {
         this.idBatch = idBatch;
     }
 
-    @Basic @Column( name = "ID_Products", nullable = false ) public int getIdProducts() {
+    @Basic
+    @Column(name = "ID_Products", nullable = false)
+    public int getIdProducts() {
         return idProducts;
     }
 
-    public void setIdProducts( int idProducts ) {
+    public void setIdProducts(int idProducts) {
         this.idProducts = idProducts;
     }
 
-    @Basic @Column( name = "Quantity", nullable = false ) public int getQuantity() {
+    @Basic
+    @Column(name = "Quantity", nullable = false)
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity( int quantity ) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    @Basic @Column( name = "uniPrice", nullable = false ) public int getUniPrice() {
+    @Basic
+    @Column(name = "uniPrice", nullable = false)
+    public int getUniPrice() {
         return uniPrice;
     }
 
-    public void setUniPrice( int uniPrice ) {
+    public void setUniPrice(int uniPrice) {
         this.uniPrice = uniPrice;
     }
 
-    @Basic @Column( name = "numberBatch", nullable = false ) public int getNumberBatch() {
+    @Basic
+    @Column(name = "numberBatch", nullable = false)
+    public int getNumberBatch() {
         return numberBatch;
     }
 
-    public void setNumberBatch( int numberBatch ) {
+    public void setNumberBatch(int numberBatch) {
         this.numberBatch = numberBatch;
     }
 
-    @Override public boolean equals( Object o ) {
-        if ( this == o )
-            return true;
-        if ( o == null || getClass() != o.getClass() )
-            return false;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         BatchsEnt batchsEnt = (BatchsEnt) o;
-        return idBatch == batchsEnt.idBatch && idProducts == batchsEnt.idProducts && quantity == batchsEnt.quantity
-                && uniPrice == batchsEnt.uniPrice && numberBatch == batchsEnt.numberBatch;
+        return idBatch == batchsEnt.idBatch && idProducts == batchsEnt.idProducts && quantity == batchsEnt.quantity && uniPrice == batchsEnt.uniPrice && numberBatch == batchsEnt.numberBatch;
     }
 
-    @Override public int hashCode() {
-        return Objects.hash( idBatch, idProducts, quantity, uniPrice, numberBatch );
+    @Override
+    public int hashCode() {
+        return Objects.hash(idBatch, idProducts, quantity, uniPrice, numberBatch);
     }
 
-    @ManyToOne @JoinColumn( name = "ID_Products", referencedColumnName = "ID_Product", nullable = false ) public ProductsEnt getProductsByIdProducts() {
+    @ManyToOne
+    @JoinColumn(name = "ID_Products", referencedColumnName = "ID_Product", nullable = false)
+    public ProductsEnt getProductsByIdProducts() {
         return productsByIdProducts;
     }
 
-    public void setProductsByIdProducts( ProductsEnt productsByIdProducts ) {
+    public void setProductsByIdProducts(ProductsEnt productsByIdProducts) {
         this.productsByIdProducts = productsByIdProducts;
     }
 
-    @OneToMany( mappedBy = "batchsByIdBatch" ) public Collection<CommandsuppliersBatchsEnt> getCommandsuppliersBatchsByIdBatch() {
+    @OneToMany(mappedBy = "batchsByIdBatch")
+    public Collection<CommandsuppliersBatchsEnt> getCommandsuppliersBatchsByIdBatch() {
         return commandsuppliersBatchsByIdBatch;
     }
 
-    public void setCommandsuppliersBatchsByIdBatch(
-            Collection<CommandsuppliersBatchsEnt> commandsuppliersBatchsByIdBatch ) {
+    public void setCommandsuppliersBatchsByIdBatch(Collection<CommandsuppliersBatchsEnt> commandsuppliersBatchsByIdBatch) {
         this.commandsuppliersBatchsByIdBatch = commandsuppliersBatchsByIdBatch;
     }
 }

@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "users", schema = "stockmanagement", catalog = "")
+@Table(name = "users", schema = "stockmanagement")
 public class UsersEnt {
     private int idUser;
     private int idRole;
@@ -125,23 +125,15 @@ public class UsersEnt {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         UsersEnt usersEnt = (UsersEnt) o;
-        return idUser == usersEnt.idUser && idRole == usersEnt.idRole && Objects
-                .equals(lastName, usersEnt.lastName) && Objects.equals(firstName, usersEnt.firstName)
-                && Objects.equals(dayOfBirth, usersEnt.dayOfBirth) && Objects
-                .equals(inscriptionDate, usersEnt.inscriptionDate) && Objects.equals(vat, usersEnt.vat)
-                && Objects.equals(mail, usersEnt.mail) && Objects
-                .equals(password, usersEnt.password) && Objects.equals(login, usersEnt.login);
+        return idUser == usersEnt.idUser && idRole == usersEnt.idRole && Objects.equals(lastName, usersEnt.lastName) && Objects.equals(firstName, usersEnt.firstName) && Objects.equals(dayOfBirth, usersEnt.dayOfBirth) && Objects.equals(inscriptionDate, usersEnt.inscriptionDate) && Objects.equals(vat, usersEnt.vat) && Objects.equals(mail, usersEnt.mail) && Objects.equals(password, usersEnt.password) && Objects.equals(login, usersEnt.login);
     }
 
     @Override
     public int hashCode() {
-        return Objects
-                .hash(idUser, idRole, lastName, firstName, dayOfBirth, inscriptionDate, vat, mail, password, login);
+        return Objects.hash(idUser, idRole, lastName, firstName, dayOfBirth, inscriptionDate, vat, mail, password, login);
     }
 
     @OneToMany(mappedBy = "usersByIdUser")
