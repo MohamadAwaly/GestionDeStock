@@ -3,12 +3,12 @@ package be.atc.entities;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Entity @Table( name = "products_categories", schema = "stockmanagement", catalog = "" ) public class ProductCategorieEnt {
-    private int          idProductsCategories;
-    private int          idProduct;
-    private int          idCategory;
-    private ProductEnt   productsByIdProduct;
-    private CategorieEnt categoriesByIdCategory;
+@Entity @Table( name = "products_categories", schema = "stockmanagement", catalog = "" ) public class ProductsCategoriesEnt {
+    private int           idProductsCategories;
+    private int           idProduct;
+    private int           idCategory;
+    private ProductsEnt   productsByIdProduct;
+    private CategoriesEnt categoriesByIdCategory;
 
     @Id @Column( name = "ID_Products_categories", nullable = false ) public int getIdProductsCategories() {
         return idProductsCategories;
@@ -39,7 +39,7 @@ import java.util.Objects;
             return true;
         if ( o == null || getClass() != o.getClass() )
             return false;
-        ProductCategorieEnt that = (ProductCategorieEnt) o;
+        ProductsCategoriesEnt that = (ProductsCategoriesEnt) o;
         return idProductsCategories == that.idProductsCategories && idProduct == that.idProduct
                 && idCategory == that.idCategory;
     }
@@ -48,19 +48,19 @@ import java.util.Objects;
         return Objects.hash( idProductsCategories, idProduct, idCategory );
     }
 
-    @ManyToOne @JoinColumn( name = "ID_Product", referencedColumnName = "ID_Product", nullable = false ) public ProductEnt getProductsByIdProduct() {
+    @ManyToOne @JoinColumn( name = "ID_Product", referencedColumnName = "ID_Product", nullable = false ) public ProductsEnt getProductsByIdProduct() {
         return productsByIdProduct;
     }
 
-    public void setProductsByIdProduct( ProductEnt productsByIdProduct ) {
+    public void setProductsByIdProduct( ProductsEnt productsByIdProduct ) {
         this.productsByIdProduct = productsByIdProduct;
     }
 
-    @ManyToOne @JoinColumn( name = "ID_Category", referencedColumnName = "ID_Categorie", nullable = false ) public CategorieEnt getCategoriesByIdCategory() {
+    @ManyToOne @JoinColumn( name = "ID_Category", referencedColumnName = "ID_Categorie", nullable = false ) public CategoriesEnt getCategoriesByIdCategory() {
         return categoriesByIdCategory;
     }
 
-    public void setCategoriesByIdCategory( CategorieEnt categoriesByIdCategory ) {
+    public void setCategoriesByIdCategory( CategoriesEnt categoriesByIdCategory ) {
         this.categoriesByIdCategory = categoriesByIdCategory;
     }
 }

@@ -10,7 +10,7 @@ import java.util.Objects;
     private String                     street;
     private int                        number;
     private int                        box;
-    private CitieEnt                   citiesByIdCity;
+    private CitiesEnt                  citiesByIdCity;
     private Collection<AdressUsersEnt> adressUsersByIdAdress;
 
     @Id @Column( name = "ID_Adress", nullable = false ) public int getIdAdress() {
@@ -67,11 +67,11 @@ import java.util.Objects;
         return Objects.hash( idAdress, idCity, street, number, box );
     }
 
-    @ManyToOne @JoinColumn( name = "ID_City", referencedColumnName = "ID_City", nullable = false ) public CitieEnt getCitiesByIdCity() {
+    @ManyToOne @JoinColumn( name = "ID_City", referencedColumnName = "ID_City", nullable = false ) public CitiesEnt getCitiesByIdCity() {
         return citiesByIdCity;
     }
 
-    public void setCitiesByIdCity( CitieEnt citiesByIdCity ) {
+    public void setCitiesByIdCity( CitiesEnt citiesByIdCity ) {
         this.citiesByIdCity = citiesByIdCity;
     }
 

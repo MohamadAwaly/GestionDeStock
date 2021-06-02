@@ -5,21 +5,21 @@ import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity @Table( name = "users", schema = "stockmanagement", catalog = "" ) public class UserEnt {
-    private int                            idUser;
-    private int                            idRole;
-    private String                         lastName;
-    private String                         firstName;
-    private Date                           dayOfBirth;
-    private Date                           inscriptionDate;
-    private String                         vat;
-    private String                         mail;
-    private String                         password;
-    private String                         login;
-    private Collection<AdressUsersEnt>     adressUsersByIdUser;
-    private Collection<CommandsupplierEnt> commandsuppliersByIdUser;
-    private Collection<OrderEnt>           ordersByIdUser;
-    private Roleent                        rolesByIdRole;
+@Entity @Table( name = "users", schema = "stockmanagement", catalog = "" ) public class UsersEnt {
+    private int                             idUser;
+    private int                             idRole;
+    private String                          lastName;
+    private String                          firstName;
+    private Date                            dayOfBirth;
+    private Date                            inscriptionDate;
+    private String                          vat;
+    private String                          mail;
+    private String                          password;
+    private String                          login;
+    private Collection<AdressUsersEnt>      adressUsersByIdUser;
+    private Collection<CommandsuppliersEnt> commandsuppliersByIdUser;
+    private Collection<OrdersEnt>           ordersByIdUser;
+    private RolesEnt                        rolesByIdRole;
 
     @Id @Column( name = "ID_User", nullable = false ) public int getIdUser() {
         return idUser;
@@ -106,13 +106,13 @@ import java.util.Objects;
             return true;
         if ( o == null || getClass() != o.getClass() )
             return false;
-        UserEnt userEnt = (UserEnt) o;
-        return idUser == userEnt.idUser && idRole == userEnt.idRole && Objects
-                .equals( lastName, userEnt.lastName ) && Objects.equals( firstName, userEnt.firstName )
-                && Objects.equals( dayOfBirth, userEnt.dayOfBirth ) && Objects
-                .equals( inscriptionDate, userEnt.inscriptionDate ) && Objects.equals( vat, userEnt.vat )
-                && Objects.equals( mail, userEnt.mail ) && Objects.equals( password, userEnt.password )
-                && Objects.equals( login, userEnt.login );
+        UsersEnt usersEnt = (UsersEnt) o;
+        return idUser == usersEnt.idUser && idRole == usersEnt.idRole && Objects
+                .equals( lastName, usersEnt.lastName ) && Objects.equals( firstName, usersEnt.firstName )
+                && Objects.equals( dayOfBirth, usersEnt.dayOfBirth ) && Objects
+                .equals( inscriptionDate, usersEnt.inscriptionDate ) && Objects.equals( vat, usersEnt.vat )
+                && Objects.equals( mail, usersEnt.mail ) && Objects
+                .equals( password, usersEnt.password ) && Objects.equals( login, usersEnt.login );
     }
 
     @Override public int hashCode() {
@@ -128,27 +128,27 @@ import java.util.Objects;
         this.adressUsersByIdUser = adressUsersByIdUser;
     }
 
-    @OneToMany( mappedBy = "usersByIdUser" ) public Collection<CommandsupplierEnt> getCommandsuppliersByIdUser() {
+    @OneToMany( mappedBy = "usersByIdUser" ) public Collection<CommandsuppliersEnt> getCommandsuppliersByIdUser() {
         return commandsuppliersByIdUser;
     }
 
-    public void setCommandsuppliersByIdUser( Collection<CommandsupplierEnt> commandsuppliersByIdUser ) {
+    public void setCommandsuppliersByIdUser( Collection<CommandsuppliersEnt> commandsuppliersByIdUser ) {
         this.commandsuppliersByIdUser = commandsuppliersByIdUser;
     }
 
-    @OneToMany( mappedBy = "usersByIdUser" ) public Collection<OrderEnt> getOrdersByIdUser() {
+    @OneToMany( mappedBy = "usersByIdUser" ) public Collection<OrdersEnt> getOrdersByIdUser() {
         return ordersByIdUser;
     }
 
-    public void setOrdersByIdUser( Collection<OrderEnt> ordersByIdUser ) {
+    public void setOrdersByIdUser( Collection<OrdersEnt> ordersByIdUser ) {
         this.ordersByIdUser = ordersByIdUser;
     }
 
-    @ManyToOne @JoinColumn( name = "ID_Role", referencedColumnName = "ID_Role", nullable = false ) public Roleent getRolesByIdRole() {
+    @ManyToOne @JoinColumn( name = "ID_Role", referencedColumnName = "ID_Role", nullable = false ) public RolesEnt getRolesByIdRole() {
         return rolesByIdRole;
     }
 
-    public void setRolesByIdRole( Roleent rolesByIdRole ) {
+    public void setRolesByIdRole( RolesEnt rolesByIdRole ) {
         this.rolesByIdRole = rolesByIdRole;
     }
 }

@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity @Table( name = "categories", schema = "stockmanagement", catalog = "" ) public class CategorieEnt {
-    private int                             idCategorie;
-    private String                          category;
-    private Collection<ProductCategorieEnt> productsCategoriesByIdCategorie;
+@Entity @Table( name = "categories", schema = "stockmanagement", catalog = "" ) public class CategoriesEnt {
+    private int                               idCategorie;
+    private String                            category;
+    private Collection<ProductsCategoriesEnt> productsCategoriesByIdCategorie;
 
     @Id @Column( name = "ID_Categorie", nullable = false ) public int getIdCategorie() {
         return idCategorie;
@@ -30,7 +30,7 @@ import java.util.Objects;
             return true;
         if ( o == null || getClass() != o.getClass() )
             return false;
-        CategorieEnt that = (CategorieEnt) o;
+        CategoriesEnt that = (CategoriesEnt) o;
         return idCategorie == that.idCategorie && Objects.equals( category, that.category );
     }
 
@@ -38,12 +38,12 @@ import java.util.Objects;
         return Objects.hash( idCategorie, category );
     }
 
-    @OneToMany( mappedBy = "categoriesByIdCategory" ) public Collection<ProductCategorieEnt> getProductsCategoriesByIdCategorie() {
+    @OneToMany( mappedBy = "categoriesByIdCategory" ) public Collection<ProductsCategoriesEnt> getProductsCategoriesByIdCategorie() {
         return productsCategoriesByIdCategorie;
     }
 
     public void setProductsCategoriesByIdCategorie(
-            Collection<ProductCategorieEnt> productsCategoriesByIdCategorie ) {
+            Collection<ProductsCategoriesEnt> productsCategoriesByIdCategorie ) {
         this.productsCategoriesByIdCategorie = productsCategoriesByIdCategorie;
     }
 }

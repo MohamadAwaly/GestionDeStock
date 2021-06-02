@@ -4,13 +4,13 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity @Table( name = "commandsuppliers_batchs", schema = "stockmanagement", catalog = "" ) public class CommandsuppliersBatchsEnt {
-    private int                idCommandsuppliersBatchs;
-    private int                idCommandSupplier;
-    private int                idBatch;
-    private int                costPrice;
-    private int                lotQuantity;
-    private CommandsupplierEnt commandsuppliersByIdCommandSupplier;
-    private BatchEnt           batchsByIdBatch;
+    private int idCommandsuppliersBatchs;
+    private int idCommandSupplier;
+    private int idBatch;
+    private int costPrice;
+    private int lotQuantity;
+    private CommandsuppliersEnt commandsuppliersByIdCommandSupplier;
+    private BatchsEnt batchsByIdBatch;
 
     @Id @Column( name = "ID_Commandsuppliers_batchs", nullable = false ) public int getIdCommandsuppliersBatchs() {
         return idCommandsuppliersBatchs;
@@ -66,19 +66,19 @@ import java.util.Objects;
         return Objects.hash( idCommandsuppliersBatchs, idCommandSupplier, idBatch, costPrice, lotQuantity );
     }
 
-    @ManyToOne @JoinColumn( name = "ID_CommandSupplier", referencedColumnName = "ID_CommandSuppliers", nullable = false ) public CommandsupplierEnt getCommandsuppliersByIdCommandSupplier() {
+    @ManyToOne @JoinColumn( name = "ID_CommandSupplier", referencedColumnName = "ID_CommandSuppliers", nullable = false ) public CommandsuppliersEnt getCommandsuppliersByIdCommandSupplier() {
         return commandsuppliersByIdCommandSupplier;
     }
 
-    public void setCommandsuppliersByIdCommandSupplier( CommandsupplierEnt commandsuppliersByIdCommandSupplier ) {
+    public void setCommandsuppliersByIdCommandSupplier( CommandsuppliersEnt commandsuppliersByIdCommandSupplier ) {
         this.commandsuppliersByIdCommandSupplier = commandsuppliersByIdCommandSupplier;
     }
 
-    @ManyToOne @JoinColumn( name = "ID_Batch", referencedColumnName = "ID_Batch", nullable = false ) public BatchEnt getBatchsByIdBatch() {
+    @ManyToOne @JoinColumn( name = "ID_Batch", referencedColumnName = "ID_Batch", nullable = false ) public BatchsEnt getBatchsByIdBatch() {
         return batchsByIdBatch;
     }
 
-    public void setBatchsByIdBatch( BatchEnt batchsByIdBatch ) {
+    public void setBatchsByIdBatch( BatchsEnt batchsByIdBatch ) {
         this.batchsByIdBatch = batchsByIdBatch;
     }
 }

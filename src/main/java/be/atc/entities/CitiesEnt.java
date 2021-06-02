@@ -4,13 +4,13 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity @Table( name = "cities", schema = "stockmanagement", catalog = "" ) public class CitieEnt {
+@Entity @Table( name = "cities", schema = "stockmanagement", catalog = "" ) public class CitiesEnt {
     private int                    idCity;
     private int                    idCountry;
     private String                 citie;
     private int                    postalCode;
     private Collection<AddressEnt> addressesByIdCity;
-    private CountrieEnt            countriesByIdCountry;
+    private CountriesEnt           countriesByIdCountry;
 
     @Id @Column( name = "ID_City", nullable = false ) public int getIdCity() {
         return idCity;
@@ -49,9 +49,9 @@ import java.util.Objects;
             return true;
         if ( o == null || getClass() != o.getClass() )
             return false;
-        CitieEnt citieEnt = (CitieEnt) o;
-        return idCity == citieEnt.idCity && idCountry == citieEnt.idCountry && postalCode == citieEnt.postalCode
-                && Objects.equals( citie, citieEnt.citie );
+        CitiesEnt citiesEnt = (CitiesEnt) o;
+        return idCity == citiesEnt.idCity && idCountry == citiesEnt.idCountry && postalCode == citiesEnt.postalCode
+                && Objects.equals( citie, citiesEnt.citie );
     }
 
     @Override public int hashCode() {
@@ -66,11 +66,11 @@ import java.util.Objects;
         this.addressesByIdCity = addressesByIdCity;
     }
 
-    @ManyToOne @JoinColumn( name = "ID_Country", referencedColumnName = "ID_Country", nullable = false ) public CountrieEnt getCountriesByIdCountry() {
+    @ManyToOne @JoinColumn( name = "ID_Country", referencedColumnName = "ID_Country", nullable = false ) public CountriesEnt getCountriesByIdCountry() {
         return countriesByIdCountry;
     }
 
-    public void setCountriesByIdCountry( CountrieEnt countriesByIdCountry ) {
+    public void setCountriesByIdCountry( CountriesEnt countriesByIdCountry ) {
         this.countriesByIdCountry = countriesByIdCountry;
     }
 }

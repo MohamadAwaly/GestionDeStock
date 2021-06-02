@@ -5,13 +5,13 @@ import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity @Table( name = "documents", schema = "stockmanagement", catalog = "" ) public class DocumentEnt {
-    private int                          idDocument;
-    private int                          idDocumentType;
-    private int                          numero;
-    private Date                         dateDocument;
-    private DocumenttypesEnt             documenttypesByIdDocumentType;
-    private Collection<OrderDocumentEnt> ordersDocumentsByIdDocument;
+@Entity @Table( name = "documents", schema = "stockmanagement", catalog = "" ) public class DocumentsEnt {
+    private int                            idDocument;
+    private int                            idDocumentType;
+    private int                            numero;
+    private Date                           dateDocument;
+    private DocumenttypesEnt               documenttypesByIdDocumentType;
+    private Collection<OrdersDocumentsEnt> ordersDocumentsByIdDocument;
 
     @Id @Column( name = "ID_Document", nullable = false ) public int getIdDocument() {
         return idDocument;
@@ -50,7 +50,7 @@ import java.util.Objects;
             return true;
         if ( o == null || getClass() != o.getClass() )
             return false;
-        DocumentEnt that = (DocumentEnt) o;
+        DocumentsEnt that = (DocumentsEnt) o;
         return idDocument == that.idDocument && idDocumentType == that.idDocumentType && numero == that.numero
                 && Objects.equals( dateDocument, that.dateDocument );
     }
@@ -67,12 +67,12 @@ import java.util.Objects;
         this.documenttypesByIdDocumentType = documenttypesByIdDocumentType;
     }
 
-    @OneToMany( mappedBy = "documentsByIdDocument" ) public Collection<OrderDocumentEnt> getOrdersDocumentsByIdDocument() {
+    @OneToMany( mappedBy = "documentsByIdDocument" ) public Collection<OrdersDocumentsEnt> getOrdersDocumentsByIdDocument() {
         return ordersDocumentsByIdDocument;
     }
 
     public void setOrdersDocumentsByIdDocument(
-            Collection<OrderDocumentEnt> ordersDocumentsByIdDocument ) {
+            Collection<OrdersDocumentsEnt> ordersDocumentsByIdDocument ) {
         this.ordersDocumentsByIdDocument = ordersDocumentsByIdDocument;
     }
 }

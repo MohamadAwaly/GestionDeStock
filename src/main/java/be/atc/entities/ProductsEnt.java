@@ -4,21 +4,21 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity @Table( name = "products", schema = "stockmanagement", catalog = "" ) public class ProductEnt {
-    private int                             idProduct;
-    private int                             idBrand;
-    private String                          code;
-    private String                          designation;
-    private int                             quantityTotal;
-    private int                             unitCostPrice;
-    private int                             margin;
-    private int                             length;
-    private int                             width;
-    private int                             height;
-    private Collection<BatchEnt>            batchsByIdProduct;
-    private Collection<OrderProductEnt>     ordersProductsByIdProduct;
-    private BrandEnt                        brandsByIdBrand;
-    private Collection<ProductCategorieEnt> productsCategoriesByIdProduct;
+@Entity @Table( name = "products", schema = "stockmanagement", catalog = "" ) public class ProductsEnt {
+    private int                               idProduct;
+    private int                               idBrand;
+    private String                            code;
+    private String                            designation;
+    private int                               quantityTotal;
+    private int                               unitCostPrice;
+    private int                               margin;
+    private int                               length;
+    private int                               width;
+    private int                               height;
+    private Collection<BatchsEnt>             batchsByIdProduct;
+    private Collection<OrdersProductsEnt>     ordersProductsByIdProduct;
+    private BrandsEnt                         brandsByIdBrand;
+    private Collection<ProductsCategoriesEnt> productsCategoriesByIdProduct;
 
     @Id @Column( name = "ID_Product", nullable = false ) public int getIdProduct() {
         return idProduct;
@@ -105,7 +105,7 @@ import java.util.Objects;
             return true;
         if ( o == null || getClass() != o.getClass() )
             return false;
-        ProductEnt that = (ProductEnt) o;
+        ProductsEnt that = (ProductsEnt) o;
         return idProduct == that.idProduct && idBrand == that.idBrand && quantityTotal == that.quantityTotal
                 && unitCostPrice == that.unitCostPrice && margin == that.margin && length == that.length
                 && width == that.width && height == that.height && Objects.equals( code, that.code )
@@ -118,36 +118,36 @@ import java.util.Objects;
                         height );
     }
 
-    @OneToMany( mappedBy = "productsByIdProducts" ) public Collection<BatchEnt> getBatchsByIdProduct() {
+    @OneToMany( mappedBy = "productsByIdProducts" ) public Collection<BatchsEnt> getBatchsByIdProduct() {
         return batchsByIdProduct;
     }
 
-    public void setBatchsByIdProduct( Collection<BatchEnt> batchsByIdProduct ) {
+    public void setBatchsByIdProduct( Collection<BatchsEnt> batchsByIdProduct ) {
         this.batchsByIdProduct = batchsByIdProduct;
     }
 
-    @OneToMany( mappedBy = "productsByIdProduct" ) public Collection<OrderProductEnt> getOrdersProductsByIdProduct() {
+    @OneToMany( mappedBy = "productsByIdProduct" ) public Collection<OrdersProductsEnt> getOrdersProductsByIdProduct() {
         return ordersProductsByIdProduct;
     }
 
-    public void setOrdersProductsByIdProduct( Collection<OrderProductEnt> ordersProductsByIdProduct ) {
+    public void setOrdersProductsByIdProduct( Collection<OrdersProductsEnt> ordersProductsByIdProduct ) {
         this.ordersProductsByIdProduct = ordersProductsByIdProduct;
     }
 
-    @ManyToOne @JoinColumn( name = "ID_Brand", referencedColumnName = "ID_Brand", nullable = false ) public BrandEnt getBrandsByIdBrand() {
+    @ManyToOne @JoinColumn( name = "ID_Brand", referencedColumnName = "ID_Brand", nullable = false ) public BrandsEnt getBrandsByIdBrand() {
         return brandsByIdBrand;
     }
 
-    public void setBrandsByIdBrand( BrandEnt brandsByIdBrand ) {
+    public void setBrandsByIdBrand( BrandsEnt brandsByIdBrand ) {
         this.brandsByIdBrand = brandsByIdBrand;
     }
 
-    @OneToMany( mappedBy = "productsByIdProduct" ) public Collection<ProductCategorieEnt> getProductsCategoriesByIdProduct() {
+    @OneToMany( mappedBy = "productsByIdProduct" ) public Collection<ProductsCategoriesEnt> getProductsCategoriesByIdProduct() {
         return productsCategoriesByIdProduct;
     }
 
     public void setProductsCategoriesByIdProduct(
-            Collection<ProductCategorieEnt> productsCategoriesByIdProduct ) {
+            Collection<ProductsCategoriesEnt> productsCategoriesByIdProduct ) {
         this.productsCategoriesByIdProduct = productsCategoriesByIdProduct;
     }
 }

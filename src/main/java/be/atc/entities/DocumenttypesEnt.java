@@ -5,9 +5,9 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity @Table( name = "documenttypes", schema = "stockmanagement", catalog = "" ) public class DocumenttypesEnt {
-    private int                     idTypeDocument;
-    private String                  documentType;
-    private Collection<DocumentEnt> documentsByIdTypeDocument;
+    private int idTypeDocument;
+    private String documentType;
+    private Collection<DocumentsEnt> documentsByIdTypeDocument;
 
     @Id @Column( name = "ID_TypeDocument", nullable = false ) public int getIdTypeDocument() {
         return idTypeDocument;
@@ -38,11 +38,11 @@ import java.util.Objects;
         return Objects.hash( idTypeDocument, documentType );
     }
 
-    @OneToMany( mappedBy = "documenttypesByIdDocumentType" ) public Collection<DocumentEnt> getDocumentsByIdTypeDocument() {
+    @OneToMany( mappedBy = "documenttypesByIdDocumentType" ) public Collection<DocumentsEnt> getDocumentsByIdTypeDocument() {
         return documentsByIdTypeDocument;
     }
 
-    public void setDocumentsByIdTypeDocument( Collection<DocumentEnt> documentsByIdTypeDocument ) {
+    public void setDocumentsByIdTypeDocument( Collection<DocumentsEnt> documentsByIdTypeDocument ) {
         this.documentsByIdTypeDocument = documentsByIdTypeDocument;
     }
 }

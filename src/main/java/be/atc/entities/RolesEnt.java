@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity @Table( name = "roles", schema = "stockmanagement", catalog = "" ) public class Roleent {
-    private int                 idRole;
-    private String              role;
-    private Collection<UserEnt> usersByIdRole;
+@Entity @Table( name = "roles", schema = "stockmanagement", catalog = "" ) public class RolesEnt {
+    private int                  idRole;
+    private String               role;
+    private Collection<UsersEnt> usersByIdRole;
 
     @Id @Column( name = "ID_Role", nullable = false ) public int getIdRole() {
         return idRole;
@@ -30,19 +30,19 @@ import java.util.Objects;
             return true;
         if ( o == null || getClass() != o.getClass() )
             return false;
-        Roleent roleent = (Roleent) o;
-        return idRole == roleent.idRole && Objects.equals( role, roleent.role );
+        RolesEnt rolesEnt = (RolesEnt) o;
+        return idRole == rolesEnt.idRole && Objects.equals( role, rolesEnt.role );
     }
 
     @Override public int hashCode() {
         return Objects.hash( idRole, role );
     }
 
-    @OneToMany( mappedBy = "rolesByIdRole" ) public Collection<UserEnt> getUsersByIdRole() {
+    @OneToMany( mappedBy = "rolesByIdRole" ) public Collection<UsersEnt> getUsersByIdRole() {
         return usersByIdRole;
     }
 
-    public void setUsersByIdRole( Collection<UserEnt> usersByIdRole ) {
+    public void setUsersByIdRole( Collection<UsersEnt> usersByIdRole ) {
         this.usersByIdRole = usersByIdRole;
     }
 }

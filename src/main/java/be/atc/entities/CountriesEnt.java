@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity @Table( name = "countries", schema = "stockmanagement", catalog = "" ) public class CountrieEnt {
-    private int                  idCountry;
-    private String               country;
-    private Collection<CitieEnt> citiesByIdCountry;
+@Entity @Table( name = "countries", schema = "stockmanagement", catalog = "" ) public class CountriesEnt {
+    private int                   idCountry;
+    private String                country;
+    private Collection<CitiesEnt> citiesByIdCountry;
 
     @Id @Column( name = "ID_Country", nullable = false ) public int getIdCountry() {
         return idCountry;
@@ -30,7 +30,7 @@ import java.util.Objects;
             return true;
         if ( o == null || getClass() != o.getClass() )
             return false;
-        CountrieEnt that = (CountrieEnt) o;
+        CountriesEnt that = (CountriesEnt) o;
         return idCountry == that.idCountry && Objects.equals( country, that.country );
     }
 
@@ -38,11 +38,11 @@ import java.util.Objects;
         return Objects.hash( idCountry, country );
     }
 
-    @OneToMany( mappedBy = "countriesByIdCountry" ) public Collection<CitieEnt> getCitiesByIdCountry() {
+    @OneToMany( mappedBy = "countriesByIdCountry" ) public Collection<CitiesEnt> getCitiesByIdCountry() {
         return citiesByIdCountry;
     }
 
-    public void setCitiesByIdCountry( Collection<CitieEnt> citiesByIdCountry ) {
+    public void setCitiesByIdCountry( Collection<CitiesEnt> citiesByIdCountry ) {
         this.citiesByIdCountry = citiesByIdCountry;
     }
 }

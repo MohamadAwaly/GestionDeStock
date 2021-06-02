@@ -9,7 +9,7 @@ import java.util.Objects;
     private int        idUser;
     private Object     typeAdress;
     private AddressEnt addressByIdAdress;
-    private UserEnt    usersByIdUser;
+    private UsersEnt   usersByIdUser;
 
     @Id @Column( name = "ID_Adress_users", nullable = false ) public int getIdAdressUsers() {
         return idAdressUsers;
@@ -65,11 +65,11 @@ import java.util.Objects;
         this.addressByIdAdress = addressByIdAdress;
     }
 
-    @ManyToOne @JoinColumn( name = "ID_User", referencedColumnName = "ID_User", nullable = false ) public UserEnt getUsersByIdUser() {
+    @ManyToOne @JoinColumn( name = "ID_User", referencedColumnName = "ID_User", nullable = false ) public UsersEnt getUsersByIdUser() {
         return usersByIdUser;
     }
 
-    public void setUsersByIdUser( UserEnt usersByIdUser ) {
+    public void setUsersByIdUser( UsersEnt usersByIdUser ) {
         this.usersByIdUser = usersByIdUser;
     }
 }

@@ -5,13 +5,13 @@ import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity @Table( name = "commandsuppliers", schema = "stockmanagement", catalog = "" ) public class CommandsupplierEnt {
+@Entity @Table( name = "commandsuppliers", schema = "stockmanagement", catalog = "" ) public class CommandsuppliersEnt {
     private int                                   idCommandSuppliers;
     private int                                   idSupplier;
     private int                                   idUser;
     private Date                                  orderDate;
-    private SupplierEnt                           suppliersByIdSupplier;
-    private UserEnt                               usersByIdUser;
+    private SuppliersEnt                          suppliersByIdSupplier;
+    private UsersEnt                              usersByIdUser;
     private Collection<CommandsuppliersBatchsEnt> commandsuppliersBatchsByIdCommandSuppliers;
 
     @Id @Column( name = "ID_CommandSuppliers", nullable = false ) public int getIdCommandSuppliers() {
@@ -51,7 +51,7 @@ import java.util.Objects;
             return true;
         if ( o == null || getClass() != o.getClass() )
             return false;
-        CommandsupplierEnt that = (CommandsupplierEnt) o;
+        CommandsuppliersEnt that = (CommandsuppliersEnt) o;
         return idCommandSuppliers == that.idCommandSuppliers && idSupplier == that.idSupplier && idUser == that.idUser
                 && Objects.equals( orderDate, that.orderDate );
     }
@@ -60,19 +60,19 @@ import java.util.Objects;
         return Objects.hash( idCommandSuppliers, idSupplier, idUser, orderDate );
     }
 
-    @ManyToOne @JoinColumn( name = "ID_Supplier", referencedColumnName = "ID_Supplier", nullable = false ) public SupplierEnt getSuppliersByIdSupplier() {
+    @ManyToOne @JoinColumn( name = "ID_Supplier", referencedColumnName = "ID_Supplier", nullable = false ) public SuppliersEnt getSuppliersByIdSupplier() {
         return suppliersByIdSupplier;
     }
 
-    public void setSuppliersByIdSupplier( SupplierEnt suppliersByIdSupplier ) {
+    public void setSuppliersByIdSupplier( SuppliersEnt suppliersByIdSupplier ) {
         this.suppliersByIdSupplier = suppliersByIdSupplier;
     }
 
-    @ManyToOne @JoinColumn( name = "ID_User", referencedColumnName = "ID_User", nullable = false ) public UserEnt getUsersByIdUser() {
+    @ManyToOne @JoinColumn( name = "ID_User", referencedColumnName = "ID_User", nullable = false ) public UsersEnt getUsersByIdUser() {
         return usersByIdUser;
     }
 
-    public void setUsersByIdUser( UserEnt usersByIdUser ) {
+    public void setUsersByIdUser( UsersEnt usersByIdUser ) {
         this.usersByIdUser = usersByIdUser;
     }
 

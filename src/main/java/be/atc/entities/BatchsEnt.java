@@ -4,13 +4,13 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity @Table( name = "batchs", schema = "stockmanagement", catalog = "" ) public class BatchEnt {
+@Entity @Table( name = "batchs", schema = "stockmanagement", catalog = "" ) public class BatchsEnt {
     private int                                   idBatch;
     private int                                   idProducts;
     private int                                   quantity;
     private int                                   uniPrice;
     private int                                   numberBatch;
-    private ProductEnt                            productsByIdProducts;
+    private ProductsEnt                           productsByIdProducts;
     private Collection<CommandsuppliersBatchsEnt> commandsuppliersBatchsByIdBatch;
 
     @Id @Column( name = "ID_Batch", nullable = false ) public int getIdBatch() {
@@ -58,20 +58,20 @@ import java.util.Objects;
             return true;
         if ( o == null || getClass() != o.getClass() )
             return false;
-        BatchEnt batchEnt = (BatchEnt) o;
-        return idBatch == batchEnt.idBatch && idProducts == batchEnt.idProducts && quantity == batchEnt.quantity
-                && uniPrice == batchEnt.uniPrice && numberBatch == batchEnt.numberBatch;
+        BatchsEnt batchsEnt = (BatchsEnt) o;
+        return idBatch == batchsEnt.idBatch && idProducts == batchsEnt.idProducts && quantity == batchsEnt.quantity
+                && uniPrice == batchsEnt.uniPrice && numberBatch == batchsEnt.numberBatch;
     }
 
     @Override public int hashCode() {
         return Objects.hash( idBatch, idProducts, quantity, uniPrice, numberBatch );
     }
 
-    @ManyToOne @JoinColumn( name = "ID_Products", referencedColumnName = "ID_Product", nullable = false ) public ProductEnt getProductsByIdProducts() {
+    @ManyToOne @JoinColumn( name = "ID_Products", referencedColumnName = "ID_Product", nullable = false ) public ProductsEnt getProductsByIdProducts() {
         return productsByIdProducts;
     }
 
-    public void setProductsByIdProducts( ProductEnt productsByIdProducts ) {
+    public void setProductsByIdProducts( ProductsEnt productsByIdProducts ) {
         this.productsByIdProducts = productsByIdProducts;
     }
 

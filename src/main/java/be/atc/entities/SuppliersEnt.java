@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity @Table( name = "suppliers", schema = "stockmanagement", catalog = "" ) public class SupplierEnt {
-    private int                            idSupplier;
-    private String                         name;
-    private Collection<CommandsupplierEnt> commandsuppliersByIdSupplier;
+@Entity @Table( name = "suppliers", schema = "stockmanagement", catalog = "" ) public class SuppliersEnt {
+    private int                             idSupplier;
+    private String                          name;
+    private Collection<CommandsuppliersEnt> commandsuppliersByIdSupplier;
 
     @Id @Column( name = "ID_Supplier", nullable = false ) public int getIdSupplier() {
         return idSupplier;
@@ -30,7 +30,7 @@ import java.util.Objects;
             return true;
         if ( o == null || getClass() != o.getClass() )
             return false;
-        SupplierEnt that = (SupplierEnt) o;
+        SuppliersEnt that = (SuppliersEnt) o;
         return idSupplier == that.idSupplier && Objects.equals( name, that.name );
     }
 
@@ -38,12 +38,12 @@ import java.util.Objects;
         return Objects.hash( idSupplier, name );
     }
 
-    @OneToMany( mappedBy = "suppliersByIdSupplier" ) public Collection<CommandsupplierEnt> getCommandsuppliersByIdSupplier() {
+    @OneToMany( mappedBy = "suppliersByIdSupplier" ) public Collection<CommandsuppliersEnt> getCommandsuppliersByIdSupplier() {
         return commandsuppliersByIdSupplier;
     }
 
     public void setCommandsuppliersByIdSupplier(
-            Collection<CommandsupplierEnt> commandsuppliersByIdSupplier ) {
+            Collection<CommandsuppliersEnt> commandsuppliersByIdSupplier ) {
         this.commandsuppliersByIdSupplier = commandsuppliersByIdSupplier;
     }
 }

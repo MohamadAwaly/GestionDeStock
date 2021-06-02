@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity @Table( name = "brands", schema = "stockmanagement", catalog = "" ) public class BrandEnt {
-    private int                    idBrand;
-    private String                 brand;
-    private Collection<ProductEnt> productsByIdBrand;
+@Entity @Table( name = "brands", schema = "stockmanagement", catalog = "" ) public class BrandsEnt {
+    private int                     idBrand;
+    private String                  brand;
+    private Collection<ProductsEnt> productsByIdBrand;
 
     @Id @Column( name = "ID_Brand", nullable = false ) public int getIdBrand() {
         return idBrand;
@@ -30,19 +30,19 @@ import java.util.Objects;
             return true;
         if ( o == null || getClass() != o.getClass() )
             return false;
-        BrandEnt brandEnt = (BrandEnt) o;
-        return idBrand == brandEnt.idBrand && Objects.equals( brand, brandEnt.brand );
+        BrandsEnt brandsEnt = (BrandsEnt) o;
+        return idBrand == brandsEnt.idBrand && Objects.equals( brand, brandsEnt.brand );
     }
 
     @Override public int hashCode() {
         return Objects.hash( idBrand, brand );
     }
 
-    @OneToMany( mappedBy = "brandsByIdBrand" ) public Collection<ProductEnt> getProductsByIdBrand() {
+    @OneToMany( mappedBy = "brandsByIdBrand" ) public Collection<ProductsEnt> getProductsByIdBrand() {
         return productsByIdBrand;
     }
 
-    public void setProductsByIdBrand( Collection<ProductEnt> productsByIdBrand ) {
+    public void setProductsByIdBrand( Collection<ProductsEnt> productsByIdBrand ) {
         this.productsByIdBrand = productsByIdBrand;
     }
 }
