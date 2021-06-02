@@ -3,37 +3,39 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.0">
-    <persistence-unit name="stockmanagement">
+    <persistence-unit name="stockmanagement" transaction-type="JTA">
 
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <jta-data-source>java:comp/env/jdbc/jpa</jta-data-source>
+        <jta-data-source>java:comp/env/jdbc/....</jta-data-source>
+
+        <!--        <jta-data-source>java:comp/env/jdbc/jpa</jta-data-source>-->
 
         <class>be.atc.entities.AddressEnt</class>
         <class>be.atc.entities.AdressUsersEnt</class>
-        <class>be.atc.entities.BatchsEnt</class>
-        <class>be.atc.entities.BrandsEnt</class>
-        <class>be.atc.entities.CategoriesEnt</class>
-        <class>be.atc.entities.CitiesEnt</class>
-        <class>be.atc.entities.CommandsuppliersEnt</class>
+        <class>be.atc.entities.BatchEnt</class>
+        <class>be.atc.entities.BrandEnt</class>
+        <class>be.atc.entities.CategorieEnt</class>
+        <class>be.atc.entities.CitieEnt</class>
+        <class>be.atc.entities.CommandsupplierEnt</class>
         <class>be.atc.entities.CommandsuppliersBatchsEnt</class>
-        <class>be.atc.entities.CountriesEnt</class>
-        <class>be.atc.entities.DocumentsEnt</class>
+        <class>be.atc.entities.CountrieEnt</class>
+        <class>be.atc.entities.DocumentEnt</class>
         <class>be.atc.entities.DocumenttypesEnt</class>
-        <class>be.atc.entities.OrdersEnt</class>
-        <class>be.atc.entities.OrdersDocuementsEnt</class>
-        <class>be.atc.entities.OrdersProductsEnt</class>
-        <class>be.atc.entities.ProductsEnt</class>
-        <class>be.atc.entities.ProductsCategoriesEnt</class>
-        <class>be.atc.entities.RolesEnt</class>
-        <class>be.atc.entities.SuppliersEnt</class>
-        <class>be.atc.entities.UsersEnt</class>
+        <class>be.atc.entities.OrderEnt</class>
+        <class>be.atc.entities.OrderDocumentEnt</class>
+        <class>be.atc.entities.OrderProductEnt</class>
+        <class>be.atc.entities.ProductEnt</class>
+        <class>be.atc.entities.ProductCategorieEnt</class>
+        <class>be.atc.entities.Roleent</class>
+        <class>be.atc.entities.SupplierEnt</class>
+        <class>be.atc.entities.UserEnt</class>
+
 
         <properties>
             <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/stockmanagement"/>
             <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name='javax.persistence.jdbc.user' value='Administrateur'/>
             <property name='javax.persistence.jdbc.password' value='Admin'/>
-
 
 
             <!--////////////////////-->

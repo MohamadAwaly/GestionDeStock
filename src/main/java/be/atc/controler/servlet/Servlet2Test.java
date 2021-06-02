@@ -1,5 +1,6 @@
 package be.atc.controler.servlet;
 
+import be.atc.controler.connexion.Factory;
 import be.atc.controler.dao.EntityTest;
 
 import javax.servlet.ServletException;
@@ -12,12 +13,15 @@ import java.io.IOException;
 @WebServlet( name = "Servlet2Test", value = "/Servlet2Test")
 public class Servlet2Test extends HttpServlet {
     private EntityTest pers = new EntityTest();
+//    private Factory factory = Factory.getInstance();
     public static final  String        VUE              = "/views/test.jsp";
 
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
+//        System.out.println("factory:" + factory);
         try {
             request.setAttribute("adresse" , pers.listDesPersonnes());
+//            request.setAttribute("factory" , factory);
         } catch ( Exception e ) {
             System.out.println( "Erreur servlet" );
         }

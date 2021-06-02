@@ -3,10 +3,11 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.0">
-    <persistence-unit name="stockmanagement">
+    <persistence-unit name="stockmanagement" transaction-type="JTA">
 
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <jta-data-source>java:comp/env/jdbc/jpa</jta-data-source>
+        <jta-data-source>java:comp/env/jdbc/....</jta-data-source>
+<!--        <jta-data-source>java:comp/env/jdbc/jpa</jta-data-source>-->
 
         <class>be.atc.entities.AddressEnt</class>
         <class>be.atc.entities.AdressUsersEnt</class>
@@ -33,7 +34,6 @@
             <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name='javax.persistence.jdbc.user' value='Administrateur'/>
             <property name='javax.persistence.jdbc.password' value='Admin'/>
-
 
 
             <!--////////////////////-->

@@ -1,10 +1,9 @@
 package be.atc.controler.dao;
 
-import be.atc.entities.UsersEnt;
+import be.atc.controler.connexion.Factory;
 
 import javax.persistence.*;
 
-import be.atc.entities.UsersEnt;
 import org.apache.log4j.Level;
 
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import java.util.List;
 
 public class EntityTest {
     private static final String                  JPQL_SELECT_USER = "SELECT u FROM UsersEnt u";
-    private static final String                  PERSISTENCE_UNIT_NAME = "stockmanagement";
     final static         org.apache.log4j.Logger logger                = org.apache.log4j.Logger
             .getLogger( EntityTest.class );
 
@@ -25,7 +23,7 @@ public class EntityTest {
         try {
             System.out.println("Début du try");
 
-            EntityManager em = getEntityManager( PERSISTENCE_UNIT_NAME );
+            EntityManager em = EMF.getEM( );
             System.out.println("em:" + em);
             System.out.println("Déclaration du query");
             Query query = em.createQuery(
@@ -37,10 +35,16 @@ public class EntityTest {
             System.out.println("apres la liste");
 
         } catch ( Exception e ) {
-            System.out.println( "Erreur dans l'entityTest" );
+            System.out.println( "Erreur dans l'entityTest: "  + e);
         }
         return list;
 
+    }
+
+    public void test(){
+        Factory factory = Factory.getInstance();
+        logger.log( Level.INFO, "factoryyyyyyyyyyyyyyyyyyyyyyyyy" );
+        logger.log( Level.INFO, factory );
     }
 
     private EntityManager getEntityManager( String PERSISTANCE ) {

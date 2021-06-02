@@ -5,12 +5,12 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity @Table( name = "address", schema = "stockmanagement", catalog = "" ) public class AddressEnt {
-    private int idAdress;
-    private int idCity;
-    private String street;
-    private int number;
-    private Integer box;
-    private CitiesEnt citiesByIdCity;
+    private int                        idAdress;
+    private int                        idCity;
+    private String                     street;
+    private int                        number;
+    private int                        box;
+    private CitieEnt                   citiesByIdCity;
     private Collection<AdressUsersEnt> adressUsersByIdAdress;
 
     @Id @Column( name = "ID_Adress", nullable = false ) public int getIdAdress() {
@@ -45,11 +45,11 @@ import java.util.Objects;
         this.number = number;
     }
 
-    @Basic @Column( name = "box", nullable = true ) public Integer getBox() {
+    @Basic @Column( name = "box", nullable = true ) public int getBox() {
         return box;
     }
 
-    public void setBox( Integer box ) {
+    public void setBox( int box ) {
         this.box = box;
     }
 
@@ -59,19 +59,19 @@ import java.util.Objects;
         if ( o == null || getClass() != o.getClass() )
             return false;
         AddressEnt that = (AddressEnt) o;
-        return idAdress == that.idAdress && idCity == that.idCity && number == that.number && Objects
-                .equals( street, that.street ) && Objects.equals( box, that.box );
+        return idAdress == that.idAdress && idCity == that.idCity && number == that.number && box == that.box
+                && Objects.equals( street, that.street );
     }
 
     @Override public int hashCode() {
         return Objects.hash( idAdress, idCity, street, number, box );
     }
 
-    @ManyToOne @JoinColumn( name = "ID_City", referencedColumnName = "ID_City", nullable = false ) public CitiesEnt getCitiesByIdCity() {
+    @ManyToOne @JoinColumn( name = "ID_City", referencedColumnName = "ID_City", nullable = false ) public CitieEnt getCitiesByIdCity() {
         return citiesByIdCity;
     }
 
-    public void setCitiesByIdCity( CitiesEnt citiesByIdCity ) {
+    public void setCitiesByIdCity( CitieEnt citiesByIdCity ) {
         this.citiesByIdCity = citiesByIdCity;
     }
 

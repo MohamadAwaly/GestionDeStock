@@ -4,11 +4,20 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity @Table( name = "adress_users", schema = "stockmanagement", catalog = "" ) public class AdressUsersEnt {
-    private int idAdress;
-    private int idUser;
-    private Object typeAdress;
+    private int        idAdressUsers;
+    private int        idAdress;
+    private int        idUser;
+    private Object     typeAdress;
     private AddressEnt addressByIdAdress;
-    private UsersEnt usersByIdUser;
+    private UserEnt    usersByIdUser;
+
+    @Id @Column( name = "ID_Adress_users", nullable = false ) public int getIdAdressUsers() {
+        return idAdressUsers;
+    }
+
+    public void setIdAdressUsers( int idAdressUsers ) {
+        this.idAdressUsers = idAdressUsers;
+    }
 
     @Basic @Column( name = "ID_Adress", nullable = false ) public int getIdAdress() {
         return idAdress;
@@ -40,12 +49,12 @@ import java.util.Objects;
         if ( o == null || getClass() != o.getClass() )
             return false;
         AdressUsersEnt that = (AdressUsersEnt) o;
-        return idAdress == that.idAdress && idUser == that.idUser && Objects
-                .equals( typeAdress, that.typeAdress );
+        return idAdressUsers == that.idAdressUsers && idAdress == that.idAdress && idUser == that.idUser
+                && Objects.equals( typeAdress, that.typeAdress );
     }
 
     @Override public int hashCode() {
-        return Objects.hash( idAdress, idUser, typeAdress );
+        return Objects.hash( idAdressUsers, idAdress, idUser, typeAdress );
     }
 
     @ManyToOne @JoinColumn( name = "ID_Adress", referencedColumnName = "ID_Adress", nullable = false ) public AddressEnt getAddressByIdAdress() {
@@ -56,11 +65,11 @@ import java.util.Objects;
         this.addressByIdAdress = addressByIdAdress;
     }
 
-    @ManyToOne @JoinColumn( name = "ID_User", referencedColumnName = "ID_User", nullable = false ) public UsersEnt getUsersByIdUser() {
+    @ManyToOne @JoinColumn( name = "ID_User", referencedColumnName = "ID_User", nullable = false ) public UserEnt getUsersByIdUser() {
         return usersByIdUser;
     }
 
-    public void setUsersByIdUser( UsersEnt usersByIdUser ) {
+    public void setUsersByIdUser( UserEnt usersByIdUser ) {
         this.usersByIdUser = usersByIdUser;
     }
 }
