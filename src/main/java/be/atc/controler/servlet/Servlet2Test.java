@@ -2,6 +2,7 @@ package be.atc.controler.servlet;
 
 import be.atc.controler.connexion.Factory;
 import be.atc.controler.dao.EntityTest;
+import org.apache.log4j.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,8 @@ import java.io.IOException;
 
 @WebServlet( name = "Servlet2Test", value = "/Servlet2Test")
 public class Servlet2Test extends HttpServlet {
+    final static         org.apache.log4j.Logger logger                = org.apache.log4j.Logger
+            .getLogger( Servlet2Test.class );
     private EntityTest pers = new EntityTest();
 //    private Factory factory = Factory.getInstance();
     public static final  String        VUE              = "/views/test.jsp";
@@ -20,6 +23,7 @@ public class Servlet2Test extends HttpServlet {
             throws ServletException, IOException {
 //        System.out.println("factory:" + factory);
         try {
+
             request.setAttribute("adresse" , pers.listDesPersonnes());
 //            request.setAttribute("factory" , factory);
         } catch ( Exception e ) {
