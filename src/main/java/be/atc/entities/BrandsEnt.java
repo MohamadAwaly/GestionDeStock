@@ -4,52 +4,45 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity
-@Table(name = "brands", schema = "stockmanagement")
-public class BrandsEnt {
-    private int idBrand;
-    private String brand;
+@Entity @Table( name = "brands", schema = "stockmanagement", catalog = "" ) public class BrandsEnt {
+    private int                     idBrand;
+    private String                  brand;
     private Collection<ProductsEnt> productsByIdBrand;
 
-    @Id
-    @Column(name = "ID_Brand", nullable = false)
-    public int getIdBrand() {
+    @Id @Column( name = "ID_Brand", nullable = false ) public int getIdBrand() {
         return idBrand;
     }
 
-    public void setIdBrand(int idBrand) {
+    public void setIdBrand( int idBrand ) {
         this.idBrand = idBrand;
     }
 
-    @Basic
-    @Column(name = "brand", nullable = false, length = 60)
-    public String getBrand() {
+    @Basic @Column( name = "brand", nullable = false, length = 60 ) public String getBrand() {
         return brand;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand( String brand ) {
         this.brand = brand;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    @Override public boolean equals( Object o ) {
+        if ( this == o )
+            return true;
+        if ( o == null || getClass() != o.getClass() )
+            return false;
         BrandsEnt brandsEnt = (BrandsEnt) o;
-        return idBrand == brandsEnt.idBrand && Objects.equals(brand, brandsEnt.brand);
+        return idBrand == brandsEnt.idBrand && Objects.equals( brand, brandsEnt.brand );
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(idBrand, brand);
+    @Override public int hashCode() {
+        return Objects.hash( idBrand, brand );
     }
 
-    @OneToMany(mappedBy = "brandsByIdBrand")
-    public Collection<ProductsEnt> getProductsByIdBrand() {
+    @OneToMany( mappedBy = "brandsByIdBrand" ) public Collection<ProductsEnt> getProductsByIdBrand() {
         return productsByIdBrand;
     }
 
-    public void setProductsByIdBrand(Collection<ProductsEnt> productsByIdBrand) {
+    public void setProductsByIdBrand( Collection<ProductsEnt> productsByIdBrand ) {
         this.productsByIdBrand = productsByIdBrand;
     }
 }

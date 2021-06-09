@@ -2,11 +2,13 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
-             version="2.2">
-    <persistence-unit name="stockmanagement">
+             version="2.0">
+    <persistence-unit name="stockmanagement" transaction-type="JTA">
 
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <jta-data-source>java:comp/env/jdbc/jpa</jta-data-source>
+        <jta-data-source>java:comp/env/jdbc/....</jta-data-source>
+<!--        <jta-data-source>java:comp/env/jdbc/jpa</jta-data-source>-->
+
         <class>be.atc.entities.AddressEnt</class>
         <class>be.atc.entities.AdressUsersEnt</class>
         <class>be.atc.entities.BatchsEnt</class>
@@ -19,7 +21,7 @@
         <class>be.atc.entities.DocumentsEnt</class>
         <class>be.atc.entities.DocumenttypesEnt</class>
         <class>be.atc.entities.OrdersEnt</class>
-        <class>be.atc.entities.OrdersDocumentsEnt</class>
+        <class>be.atc.entities.OrdersDocuementsEnt</class>
         <class>be.atc.entities.OrdersProductsEnt</class>
         <class>be.atc.entities.ProductsEnt</class>
         <class>be.atc.entities.ProductsCategoriesEnt</class>
@@ -32,15 +34,20 @@
             <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name='javax.persistence.jdbc.user' value='Administrateur'/>
             <property name='javax.persistence.jdbc.password' value='Admin'/>
+
+
             <!--////////////////////-->
-            <!--  Optimization #14 - avoid auto flush cost on query execution -->
+           <!--  Optimization #14 - avoid auto flush cost on query execution -->
             <property name="eclipselink.persistence-context.flush-mode" value="commit"/>
             <property name="eclipselink.cache.shared.default" value="false"/>
+
             <property name="eclipselink.logging.level" value="FINEST"/>
+
             <property name="eclipselink.connection-pool.default.initial" value="1"/>
             <property name="eclipselink.connection-pool.node2.min" value="16"/>
             <property name="eclipselink.connection-pool.node2.max" value="16"/>
             <property name="eclipselink.connection-pool.node2.wait" value="300"/>
+
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
 
         </properties>
