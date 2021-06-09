@@ -13,7 +13,7 @@
     <title>Title</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
-<%--    <link rel="stylesheet" href="../resources/css/allCss.css">--%>
+<%--    <link type="text/css" rel="stylesheet" href="../resources/css/allCss.css">--%>
 <%--    <script type="text/javascript" src="../resources/js/script.js"></script>--%>
 <%--    <script type="text/javascript" src="../resources/js/jquery-3.5.1.js"></script>--%>
     <!-- JavaScript Bundle with Popper -->
