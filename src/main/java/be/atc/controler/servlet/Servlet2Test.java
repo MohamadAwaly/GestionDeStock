@@ -16,7 +16,6 @@ public class Servlet2Test extends HttpServlet {
     final static         org.apache.log4j.Logger logger                = org.apache.log4j.Logger
             .getLogger( Servlet2Test.class );
     private EntityTest pers = new EntityTest();
-//    private Factory factory = Factory.getInstance();
     public static final  String        VUE              = "/views/test.jsp";
 
     protected void doPost( HttpServletRequest request, HttpServletResponse response )

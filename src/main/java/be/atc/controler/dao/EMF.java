@@ -17,6 +17,7 @@ public final class EMF {
     private EMF() {}
 
     public static EntityManagerFactory getEMF() {
+        System.out.println("emfInstance" + emfInstance);
         return emfInstance;
     }
     
