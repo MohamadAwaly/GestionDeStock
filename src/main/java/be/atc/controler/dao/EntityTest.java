@@ -1,12 +1,9 @@
 package be.atc.controler.dao;
 
-import be.atc.controler.connexion.Factory;
-
-import javax.persistence.*;
-
 import be.atc.entities.UsersEnt;
-import org.apache.log4j.Level;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 

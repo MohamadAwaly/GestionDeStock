@@ -20,7 +20,9 @@ import java.util.Objects;
     private BrandsEnt                         brandsByIdBrand;
     private Collection<ProductsCategoriesEnt> productsCategoriesByIdProduct;
 
-    @Id @Column( name = "ID_Product", nullable = false ) public int getIdProduct() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_Product", nullable = false ) public int getIdProduct() {
         return idProduct;
     }
 

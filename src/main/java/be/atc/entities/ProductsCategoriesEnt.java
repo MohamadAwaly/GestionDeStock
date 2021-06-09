@@ -10,7 +10,9 @@ import java.util.Objects;
     private ProductsEnt   productsByIdProduct;
     private CategoriesEnt categoriesByIdCategory;
 
-    @Id @Column( name = "ID_Products_categories", nullable = false ) public int getIdProductsCategories() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_Products_categories", nullable = false ) public int getIdProductsCategories() {
         return idProductsCategories;
     }
 

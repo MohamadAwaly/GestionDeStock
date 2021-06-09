@@ -13,7 +13,9 @@ import java.util.Objects;
     private ProductsEnt                           productsByIdProducts;
     private Collection<CommandsuppliersBatchsEnt> commandsuppliersBatchsByIdBatch;
 
-    @Id @Column( name = "ID_Batch", nullable = false ) public int getIdBatch() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_Batch", nullable = false ) public int getIdBatch() {
         return idBatch;
     }
 

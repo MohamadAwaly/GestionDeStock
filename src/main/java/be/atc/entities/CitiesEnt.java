@@ -12,7 +12,9 @@ import java.util.Objects;
     private Collection<AddressEnt> addressesByIdCity;
     private CountriesEnt           countriesByIdCountry;
 
-    @Id @Column( name = "ID_City", nullable = false ) public int getIdCity() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_City", nullable = false ) public int getIdCity() {
         return idCity;
     }
 

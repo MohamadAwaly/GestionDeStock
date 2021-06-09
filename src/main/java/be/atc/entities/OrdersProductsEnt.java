@@ -13,7 +13,9 @@ import java.util.Objects;
     private OrdersEnt   ordersByIdOrder;
     private ProductsEnt productsByIdProduct;
 
-    @Id @Column( name = "ID_Orders_products", nullable = false ) public int getIdOrdersProducts() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_Orders_products", nullable = false ) public int getIdOrdersProducts() {
         return idOrdersProducts;
     }
 

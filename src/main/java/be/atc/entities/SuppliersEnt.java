@@ -9,7 +9,9 @@ import java.util.Objects;
     private String                          name;
     private Collection<CommandsuppliersEnt> commandsuppliersByIdSupplier;
 
-    @Id @Column( name = "ID_Supplier", nullable = false ) public int getIdSupplier() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_Supplier", nullable = false ) public int getIdSupplier() {
         return idSupplier;
     }
 

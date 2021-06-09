@@ -11,12 +11,13 @@ public class AdressUsersEnt {
     private int idAdressUsers;
     private int idAdress;
     private int idUser;
-    @Enumerated(EnumType.STRING)
+
     private TypeAdress typeAdress;
     private AddressEnt addressByIdAdress;
     private UsersEnt usersByIdUser;
 
     @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "ID_Adress_users", nullable = false)
     public int getIdAdressUsers() {
         return idAdressUsers;
@@ -48,6 +49,7 @@ public class AdressUsersEnt {
 
     @Basic
     @Column(name = "typeAdress", nullable = false)
+    @Enumerated(EnumType.STRING)
     public TypeAdress getTypeAdress() {
         return typeAdress;
     }

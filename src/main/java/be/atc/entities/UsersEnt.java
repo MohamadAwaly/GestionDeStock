@@ -21,7 +21,9 @@ import java.util.Objects;
     private Collection<OrdersEnt>           ordersByIdUser;
     private RolesEnt                        rolesByIdRole;
 
-    @Id @Column( name = "ID_User", nullable = false ) public int getIdUser() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_User", nullable = false ) public int getIdUser() {
         return idUser;
     }
 

@@ -9,7 +9,9 @@ import java.util.Objects;
     private String                  brand;
     private Collection<ProductsEnt> productsByIdBrand;
 
-    @Id @Column( name = "ID_Brand", nullable = false ) public int getIdBrand() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_Brand", nullable = false ) public int getIdBrand() {
         return idBrand;
     }
 

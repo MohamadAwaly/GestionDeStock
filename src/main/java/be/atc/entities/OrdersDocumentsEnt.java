@@ -10,7 +10,9 @@ import java.util.Objects;
     private OrdersEnt ordersByIdOrder;
     private DocumentsEnt documentsByIdDocument;
 
-    @Id @Column( name = "ID_Orders_docuements", nullable = false ) public int getIdOrdersDocuements() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_Orders_docuements", nullable = false ) public int getIdOrdersDocuements() {
         return idOrdersDocuements;
     }
 

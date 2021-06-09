@@ -12,7 +12,9 @@ import java.util.Objects;
     private CommandsuppliersEnt commandsuppliersByIdCommandSupplier;
     private BatchsEnt batchsByIdBatch;
 
-    @Id @Column( name = "ID_Commandsuppliers_batchs", nullable = false ) public int getIdCommandsuppliersBatchs() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_Commandsuppliers_batchs", nullable = false ) public int getIdCommandsuppliersBatchs() {
         return idCommandsuppliersBatchs;
     }
 

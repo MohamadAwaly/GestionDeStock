@@ -9,7 +9,9 @@ import java.util.Objects;
     private String documentType;
     private Collection<DocumentsEnt> documentsByIdTypeDocument;
 
-    @Id @Column( name = "ID_TypeDocument", nullable = false ) public int getIdTypeDocument() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_TypeDocument", nullable = false ) public int getIdTypeDocument() {
         return idTypeDocument;
     }
 

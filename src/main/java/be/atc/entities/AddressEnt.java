@@ -13,7 +13,9 @@ import java.util.Objects;
     private CitiesEnt                  citiesByIdCity;
     private Collection<AdressUsersEnt> adressUsersByIdAdress;
 
-    @Id @Column( name = "ID_Adress", nullable = false ) public int getIdAdress() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_Adress", nullable = false ) public int getIdAdress() {
         return idAdress;
     }
 

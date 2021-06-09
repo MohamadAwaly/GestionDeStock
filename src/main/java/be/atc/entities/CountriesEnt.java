@@ -9,7 +9,9 @@ import java.util.Objects;
     private String                country;
     private Collection<CitiesEnt> citiesByIdCountry;
 
-    @Id @Column( name = "ID_Country", nullable = false ) public int getIdCountry() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_Country", nullable = false ) public int getIdCountry() {
         return idCountry;
     }
 

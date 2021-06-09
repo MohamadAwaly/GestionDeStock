@@ -13,7 +13,9 @@ import java.util.Objects;
     private DocumenttypesEnt               documenttypesByIdDocumentType;
     private Collection<OrdersDocumentsEnt> ordersDocumentsByIdDocument;
 
-    @Id @Column( name = "ID_Document", nullable = false ) public int getIdDocument() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_Document", nullable = false ) public int getIdDocument() {
         return idDocument;
     }
 

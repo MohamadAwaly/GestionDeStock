@@ -14,7 +14,9 @@ import java.util.Objects;
     private UsersEnt                              usersByIdUser;
     private Collection<CommandsuppliersBatchsEnt> commandsuppliersBatchsByIdCommandSuppliers;
 
-    @Id @Column( name = "ID_CommandSuppliers", nullable = false ) public int getIdCommandSuppliers() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_CommandSuppliers", nullable = false ) public int getIdCommandSuppliers() {
         return idCommandSuppliers;
     }
 
