@@ -6,9 +6,9 @@
     <persistence-unit name="stockmanagement" transaction-type="JTA">
 
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <jta-data-source>java:comp/env/jdbc/....</jta-data-source>
+        <!--        <jta-data-source>java:comp/env/jdbc/....</jta-data-source>-->
 
-        <!--        <jta-data-source>java:comp/env/jdbc/jpa</jta-data-source>-->
+        <jta-data-source>java:comp/env/jdbc/jpa</jta-data-source>
 
         <class>be.atc.entities.AddressEnt</class>
         <class>be.atc.entities.AdressUsersEnt</class>
@@ -37,7 +37,7 @@
 
 
             <!--////////////////////-->
-           <!--  Optimization #14 - avoid auto flush cost on query execution -->
+            <!--  Optimization #14 - avoid auto flush cost on query execution -->
             <property name="eclipselink.persistence-context.flush-mode" value="commit"/>
             <property name="eclipselink.cache.shared.default" value="false"/>
 

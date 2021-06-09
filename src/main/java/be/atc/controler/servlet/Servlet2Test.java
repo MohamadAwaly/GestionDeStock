@@ -19,7 +19,6 @@ public class Servlet2Test extends HttpServlet {
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
         try {
-
             request.setAttribute( "adresse", pers.listDesPersonnes() );
         } catch ( Exception e ) {
             System.out.println( "Erreur servlet" );
@@ -35,6 +34,5 @@ public class Servlet2Test extends HttpServlet {
             System.out.println( "Erreur servlet get" );
         }
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
-
     }
 }

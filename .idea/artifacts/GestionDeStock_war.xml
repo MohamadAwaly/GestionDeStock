@@ -9,11 +9,6 @@
     </properties>
     <root id="archive" name="GestionDeStock-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="GestionDeStock:war exploded" />
-      <element id="directory" name="WEB-INF">
-        <element id="directory" name="lib">
-          <element id="file-copy" path="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/javax.persistence-2.2.0-release.jar" />
-        </element>
-      </element>
     </root>
   </artifact>
 </component>
