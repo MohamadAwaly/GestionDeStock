@@ -14,7 +14,7 @@ import java.util.Objects;
     private Collection<AdressUsersEnt> adressUsersByIdAdress;
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column( name = "ID_Adress", nullable = false ) public int getIdAdress() {
         return idAdress;
     }

@@ -18,7 +18,7 @@ public class EntityTest {
             EntityManager em = EMF.getEM();
             logger.log( Level.INFO,"test" );
             user = em
-                    .createQuery( "select u from UsersEnt u ", UsersEnt.class )
+                    .createQuery( "select u from UsersEnt u ")
                     .getResultList();
             logger.log( Level.INFO,"test1" );
 

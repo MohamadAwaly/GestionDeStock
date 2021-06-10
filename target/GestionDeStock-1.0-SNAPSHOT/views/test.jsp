@@ -22,6 +22,11 @@
             <td><c:out value="${ adresse[0] } "/></td>
             <td><c:out value="${ adresse[1] } "/></td>
             <td><c:out value="${ adresse[2] } "/></td>
+            <td><c:out value="${ adresse[3] } "/></td>
+            <td><c:out value="${ adresse[4] }"/></td>
+            <td><c:out value="${ adresse[5] }"/></td>
+            <td><c:out value="${ adresse[6] }"/></td>
+
         </tr>
     </c:forEach>
 </table>
