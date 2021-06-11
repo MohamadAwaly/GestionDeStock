@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity @Table( name = "batchs", schema = "stockmanagement", catalog = "" ) public class BatchsEnt {
     private int                                   idBatch;
-    private int                                   idProducts;
+//    private int                                   idProducts;
     private int                                   quantity;
     private int                                   uniPrice;
     private int                                   numberBatch;
@@ -23,13 +23,13 @@ import java.util.Objects;
         this.idBatch = idBatch;
     }
 
-    @Basic @Column( name = "ID_Products", nullable = false ) public int getIdProducts() {
-        return idProducts;
-    }
-
-    public void setIdProducts( int idProducts ) {
-        this.idProducts = idProducts;
-    }
+//    @Basic @Column( name = "ID_Products", nullable = false ) public int getIdProducts() {
+//        return idProducts;
+//    }
+//
+//    public void setIdProducts( int idProducts ) {
+//        this.idProducts = idProducts;
+//    }
 
     @Basic @Column( name = "Quantity", nullable = false ) public int getQuantity() {
         return quantity;
@@ -61,12 +61,16 @@ import java.util.Objects;
         if ( o == null || getClass() != o.getClass() )
             return false;
         BatchsEnt batchsEnt = (BatchsEnt) o;
-        return idBatch == batchsEnt.idBatch && idProducts == batchsEnt.idProducts && quantity == batchsEnt.quantity
-                && uniPrice == batchsEnt.uniPrice && numberBatch == batchsEnt.numberBatch;
+        return idBatch == batchsEnt.idBatch && quantity == batchsEnt.quantity && uniPrice == batchsEnt.uniPrice
+                && numberBatch == batchsEnt.numberBatch && Objects
+                .equals( productsByIdProducts, batchsEnt.productsByIdProducts ) && Objects
+                .equals( commandsuppliersBatchsByIdBatch, batchsEnt.commandsuppliersBatchsByIdBatch );
     }
 
     @Override public int hashCode() {
-        return Objects.hash( idBatch, idProducts, quantity, uniPrice, numberBatch );
+        return Objects
+                .hash( idBatch, quantity, uniPrice, numberBatch, productsByIdProducts,
+                        commandsuppliersBatchsByIdBatch );
     }
 
     @ManyToOne @JoinColumn( name = "ID_Products", referencedColumnName = "ID_Product", nullable = false ) public ProductsEnt getProductsByIdProducts() {

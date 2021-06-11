@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity @Table( name = "documents", schema = "stockmanagement", catalog = "" ) public class DocumentsEnt {
     private int                            idDocument;
-    private int                            idDocumentType;
+//    private int                            idDocumentType;
     private int                            numero;
     private Date                           dateDocument;
     private DocumenttypesEnt               documenttypesByIdDocumentType;
@@ -23,13 +23,13 @@ import java.util.Objects;
         this.idDocument = idDocument;
     }
 
-    @Basic @Column( name = "ID_DocumentType", nullable = false ) public int getIdDocumentType() {
-        return idDocumentType;
-    }
-
-    public void setIdDocumentType( int idDocumentType ) {
-        this.idDocumentType = idDocumentType;
-    }
+//    @Basic @Column( name = "ID_DocumentType", nullable = false ) public int getIdDocumentType() {
+//        return idDocumentType;
+//    }
+//
+//    public void setIdDocumentType( int idDocumentType ) {
+//        this.idDocumentType = idDocumentType;
+//    }
 
     @Basic @Column( name = "Numero", nullable = false ) public int getNumero() {
         return numero;
@@ -53,12 +53,15 @@ import java.util.Objects;
         if ( o == null || getClass() != o.getClass() )
             return false;
         DocumentsEnt that = (DocumentsEnt) o;
-        return idDocument == that.idDocument && idDocumentType == that.idDocumentType && numero == that.numero
-                && Objects.equals( dateDocument, that.dateDocument );
+        return idDocument == that.idDocument && numero == that.numero && Objects
+                .equals( dateDocument, that.dateDocument ) && Objects
+                .equals( documenttypesByIdDocumentType, that.documenttypesByIdDocumentType ) && Objects
+                .equals( ordersDocumentsByIdDocument, that.ordersDocumentsByIdDocument );
     }
 
     @Override public int hashCode() {
-        return Objects.hash( idDocument, idDocumentType, numero, dateDocument );
+        return Objects
+                .hash( idDocument, numero, dateDocument, documenttypesByIdDocumentType, ordersDocumentsByIdDocument );
     }
 
     @ManyToOne @JoinColumn( name = "ID_DocumentType", referencedColumnName = "ID_TypeDocument", nullable = false ) public DocumenttypesEnt getDocumenttypesByIdDocumentType() {

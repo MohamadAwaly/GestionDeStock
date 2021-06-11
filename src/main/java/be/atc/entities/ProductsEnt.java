@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity @Table( name = "products", schema = "stockmanagement", catalog = "" ) public class ProductsEnt {
     private int                               idProduct;
-    private int                               idBrand;
+//    private int                               idBrand;
     private String                            code;
     private String                            designation;
     private int                               quantityTotal;
@@ -30,13 +30,13 @@ import java.util.Objects;
         this.idProduct = idProduct;
     }
 
-    @Basic @Column( name = "ID_Brand", nullable = false ) public int getIdBrand() {
-        return idBrand;
-    }
-
-    public void setIdBrand( int idBrand ) {
-        this.idBrand = idBrand;
-    }
+//    @Basic @Column( name = "ID_Brand", nullable = false ) public int getIdBrand() {
+//        return idBrand;
+//    }
+//
+//    public void setIdBrand( int idBrand ) {
+//        this.idBrand = idBrand;
+//    }
 
     @Basic @Column( name = "code", nullable = false, length = 255 ) public String getCode() {
         return code;
@@ -108,16 +108,18 @@ import java.util.Objects;
         if ( o == null || getClass() != o.getClass() )
             return false;
         ProductsEnt that = (ProductsEnt) o;
-        return idProduct == that.idProduct && idBrand == that.idBrand && quantityTotal == that.quantityTotal
-                && unitCostPrice == that.unitCostPrice && margin == that.margin && length == that.length
-                && width == that.width && height == that.height && Objects.equals( code, that.code )
-                && Objects.equals( designation, that.designation );
+        return idProduct == that.idProduct && quantityTotal == that.quantityTotal && unitCostPrice == that.unitCostPrice
+                && margin == that.margin && length == that.length && width == that.width && height == that.height
+                && Objects.equals( code, that.code ) && Objects.equals( designation, that.designation )
+                && Objects.equals( batchsByIdProduct, that.batchsByIdProduct ) && Objects
+                .equals( ordersProductsByIdProduct, that.ordersProductsByIdProduct ) && Objects
+                .equals( brandsByIdBrand, that.brandsByIdBrand ) && Objects
+                .equals( productsCategoriesByIdProduct, that.productsCategoriesByIdProduct );
     }
 
     @Override public int hashCode() {
-        return Objects
-                .hash( idProduct, idBrand, code, designation, quantityTotal, unitCostPrice, margin, length, width,
-                        height );
+        return Objects.hash( idProduct, code, designation, quantityTotal, unitCostPrice, margin, length, width, height,
+                batchsByIdProduct, ordersProductsByIdProduct, brandsByIdBrand, productsCategoriesByIdProduct );
     }
 
     @OneToMany( mappedBy = "productsByIdProducts" ) public Collection<BatchsEnt> getBatchsByIdProduct() {

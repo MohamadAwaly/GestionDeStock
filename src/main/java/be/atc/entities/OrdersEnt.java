@@ -11,7 +11,7 @@ import java.util.Objects;
 @Table( name = "orders", schema = "stockmanagement", catalog = "" )
 public class OrdersEnt {
     private int                            idOrder;
-    private int                            idUser;
+//    private int                            idUser;
     private int                            reduction;
     private Date                           dateORder;
     private Boolean                        payed;
@@ -35,15 +35,15 @@ public class OrdersEnt {
         this.idOrder = idOrder;
     }
 
-    @Basic
-    @Column( name = "Id_User", nullable = false )
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser( int idUser ) {
-        this.idUser = idUser;
-    }
+//    @Basic
+//    @Column( name = "Id_User", nullable = false )
+//    public int getIdUser() {
+//        return idUser;
+//    }
+//
+//    public void setIdUser( int idUser ) {
+//        this.idUser = idUser;
+//    }
 
     @Basic
     @Column( name = "reduction", nullable = true )
@@ -117,26 +117,25 @@ public class OrdersEnt {
         this.modeOfPayement = modeOfPayement;
     }
 
-    @Override
-    public boolean equals( Object o ) {
+    @Override public boolean equals( Object o ) {
         if ( this == o )
             return true;
         if ( o == null || getClass() != o.getClass() )
             return false;
         OrdersEnt ordersEnt = (OrdersEnt) o;
-        return idOrder == ordersEnt.idOrder && idUser == ordersEnt.idUser && reduction == ordersEnt.reduction
-                && Objects.equals( dateORder, ordersEnt.dateORder ) && Objects
-                .equals( payed, ordersEnt.payed ) && Objects.equals( payementDate, ordersEnt.payementDate )
-                && Objects.equals( deliver, ordersEnt.deliver ) && Objects
-                .equals( deliverDate, ordersEnt.deliverDate ) && Objects
-                .equals( modeOfPayement, ordersEnt.modeOfPayement );
+        return idOrder == ordersEnt.idOrder && reduction == ordersEnt.reduction && Objects
+                .equals( dateORder, ordersEnt.dateORder ) && Objects.equals( payed, ordersEnt.payed )
+                && Objects.equals( payementDate, ordersEnt.payementDate ) && Objects
+                .equals( deliver, ordersEnt.deliver ) && Objects.equals( deliverDate, ordersEnt.deliverDate )
+                && modeOfPayement == ordersEnt.modeOfPayement && Objects
+                .equals( usersByIdUser, ordersEnt.usersByIdUser ) && Objects
+                .equals( ordersDocumentsByIdOrder, ordersEnt.ordersDocumentsByIdOrder ) && Objects
+                .equals( ordersProductsByIdOrder, ordersEnt.ordersProductsByIdOrder );
     }
 
-    @Override
-    public int hashCode() {
-        return Objects
-                .hash( idOrder, idUser, reduction, dateORder, payed, payementDate, deliver, deliverDate,
-                        modeOfPayement );
+    @Override public int hashCode() {
+        return Objects.hash( idOrder, reduction, dateORder, payed, payementDate, deliver, deliverDate, modeOfPayement,
+                usersByIdUser, ordersDocumentsByIdOrder, ordersProductsByIdOrder );
     }
 
     @ManyToOne

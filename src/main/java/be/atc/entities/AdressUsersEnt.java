@@ -9,8 +9,8 @@ import java.util.Objects;
 @Table(name = "adress_users", schema = "stockmanagement", catalog = "")
 public class AdressUsersEnt {
     private int idAdressUsers;
-    private int idAdress;
-    private int idUser;
+//    private int idAdress;
+//    private int idUser;
 
     private TypeAdress typeAdress;
     private AddressEnt addressByIdAdress;
@@ -27,25 +27,25 @@ public class AdressUsersEnt {
         this.idAdressUsers = idAdressUsers;
     }
 
-    @Basic
-    @Column(name = "ID_Adress", nullable = false)
-    public int getIdAdress() {
-        return idAdress;
-    }
-
-    public void setIdAdress(int idAdress) {
-        this.idAdress = idAdress;
-    }
-
-    @Basic
-    @Column(name = "ID_User", nullable = false)
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
+//    @Basic
+//    @Column(name = "ID_Adress", nullable = false)
+//    public int getIdAdress() {
+//        return idAdress;
+//    }
+//
+//    public void setIdAdress(int idAdress) {
+//        this.idAdress = idAdress;
+//    }
+//
+//    @Basic
+//    @Column(name = "ID_User", nullable = false)
+//    public int getIdUser() {
+//        return idUser;
+//    }
+//
+//    public void setIdUser(int idUser) {
+//        this.idUser = idUser;
+//    }
 
     @Basic
     @Column(name = "typeAdress", nullable = false)
@@ -58,20 +58,19 @@ public class AdressUsersEnt {
         this.typeAdress = typeAdress;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
+    @Override public boolean equals( Object o ) {
+        if ( this == o )
             return true;
-        if (o == null || getClass() != o.getClass())
+        if ( o == null || getClass() != o.getClass() )
             return false;
         AdressUsersEnt that = (AdressUsersEnt) o;
-        return idAdressUsers == that.idAdressUsers && idAdress == that.idAdress && idUser == that.idUser
-                && Objects.equals(typeAdress, that.typeAdress);
+        return idAdressUsers == that.idAdressUsers && typeAdress == that.typeAdress && Objects
+                .equals( addressByIdAdress, that.addressByIdAdress ) && Objects
+                .equals( usersByIdUser, that.usersByIdUser );
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(idAdressUsers, idAdress, idUser, typeAdress);
+    @Override public int hashCode() {
+        return Objects.hash( idAdressUsers, typeAdress, addressByIdAdress, usersByIdUser );
     }
 
     @ManyToOne

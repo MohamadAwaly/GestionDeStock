@@ -5,8 +5,8 @@ import java.util.Objects;
 
 @Entity @Table( name = "commandsuppliers_batchs", schema = "stockmanagement", catalog = "" ) public class CommandsuppliersBatchsEnt {
     private int idCommandsuppliersBatchs;
-    private int idCommandSupplier;
-    private int idBatch;
+//    private int idCommandSupplier;
+//    private int idBatch;
     private int costPrice;
     private int lotQuantity;
     private CommandsuppliersEnt commandsuppliersByIdCommandSupplier;
@@ -22,21 +22,21 @@ import java.util.Objects;
         this.idCommandsuppliersBatchs = idCommandsuppliersBatchs;
     }
 
-    @Basic @Column( name = "ID_CommandSupplier", nullable = false ) public int getIdCommandSupplier() {
-        return idCommandSupplier;
-    }
-
-    public void setIdCommandSupplier( int idCommandSupplier ) {
-        this.idCommandSupplier = idCommandSupplier;
-    }
-
-    @Basic @Column( name = "ID_Batch", nullable = false ) public int getIdBatch() {
-        return idBatch;
-    }
-
-    public void setIdBatch( int idBatch ) {
-        this.idBatch = idBatch;
-    }
+//    @Basic @Column( name = "ID_CommandSupplier", nullable = false ) public int getIdCommandSupplier() {
+//        return idCommandSupplier;
+//    }
+//
+//    public void setIdCommandSupplier( int idCommandSupplier ) {
+//        this.idCommandSupplier = idCommandSupplier;
+//    }
+//
+//    @Basic @Column( name = "ID_Batch", nullable = false ) public int getIdBatch() {
+//        return idBatch;
+//    }
+//
+//    public void setIdBatch( int idBatch ) {
+//        this.idBatch = idBatch;
+//    }
 
     @Basic @Column( name = "costPrice", nullable = false ) public int getCostPrice() {
         return costPrice;
@@ -60,12 +60,15 @@ import java.util.Objects;
         if ( o == null || getClass() != o.getClass() )
             return false;
         CommandsuppliersBatchsEnt that = (CommandsuppliersBatchsEnt) o;
-        return idCommandsuppliersBatchs == that.idCommandsuppliersBatchs && idCommandSupplier == that.idCommandSupplier
-                && idBatch == that.idBatch && costPrice == that.costPrice && lotQuantity == that.lotQuantity;
+        return idCommandsuppliersBatchs == that.idCommandsuppliersBatchs && costPrice == that.costPrice
+                && lotQuantity == that.lotQuantity && Objects
+                .equals( commandsuppliersByIdCommandSupplier, that.commandsuppliersByIdCommandSupplier )
+                && Objects.equals( batchsByIdBatch, that.batchsByIdBatch );
     }
 
     @Override public int hashCode() {
-        return Objects.hash( idCommandsuppliersBatchs, idCommandSupplier, idBatch, costPrice, lotQuantity );
+        return Objects.hash( idCommandsuppliersBatchs, costPrice, lotQuantity, commandsuppliersByIdCommandSupplier,
+                batchsByIdBatch );
     }
 
     @ManyToOne @JoinColumn( name = "ID_CommandSupplier", referencedColumnName = "ID_CommandSuppliers", nullable = false ) public CommandsuppliersEnt getCommandsuppliersByIdCommandSupplier() {

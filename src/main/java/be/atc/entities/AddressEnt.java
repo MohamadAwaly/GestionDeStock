@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity @Table( name = "address", schema = "stockmanagement", catalog = "" ) public class AddressEnt {
     private int                        idAdress;
-    private int                        idCity;
+//    private int                        idCity;
     private String                     street;
     private int                        number;
     private int                        box;
@@ -23,13 +23,13 @@ import java.util.Objects;
         this.idAdress = idAdress;
     }
 
-    @Basic @Column( name = "ID_City", nullable = false ) public int getIdCity() {
-        return idCity;
-    }
-
-    public void setIdCity( int idCity ) {
-        this.idCity = idCity;
-    }
+//    @Basic @Column( name = "ID_City", nullable = false ) public int getIdCity() {
+//        return idCity;
+//    }
+//
+//    public void setIdCity( int idCity ) {
+//        this.idCity = idCity;
+//    }
 
     @Basic @Column( name = "street", nullable = false, length = 255 ) public String getStreet() {
         return street;
@@ -61,12 +61,13 @@ import java.util.Objects;
         if ( o == null || getClass() != o.getClass() )
             return false;
         AddressEnt that = (AddressEnt) o;
-        return idAdress == that.idAdress && idCity == that.idCity && number == that.number && box == that.box
-                && Objects.equals( street, that.street );
+        return idAdress == that.idAdress && number == that.number && box == that.box && Objects
+                .equals( street, that.street ) && Objects.equals( citiesByIdCity, that.citiesByIdCity )
+                && Objects.equals( adressUsersByIdAdress, that.adressUsersByIdAdress );
     }
 
     @Override public int hashCode() {
-        return Objects.hash( idAdress, idCity, street, number, box );
+        return Objects.hash( idAdress, street, number, box, citiesByIdCity, adressUsersByIdAdress );
     }
 
     @ManyToOne @JoinColumn( name = "ID_City", referencedColumnName = "ID_City", nullable = false ) public CitiesEnt getCitiesByIdCity() {
