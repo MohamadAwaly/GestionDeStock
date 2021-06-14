@@ -23,7 +23,7 @@ import java.util.Objects;
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column( name = "ID_User", nullable = false ) public int getIdUser() {
+    @Column( name = "id_user", nullable = false ) public int getIdUser() {
         return idUser;
     }
 
