@@ -6,10 +6,12 @@ import java.util.Objects;
 
 @Entity @Table( name = "brands", schema = "stockmanagement", catalog = "" ) public class BrandsEnt {
     private int                     idBrand;
-    private String                  brand;
+//    private String                  brand;
     private Collection<ProductsEnt> productsByIdBrand;
 
-    @Id @Column( name = "ID_Brand", nullable = false ) public int getIdBrand() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_Brand", nullable = false ) public int getIdBrand() {
         return idBrand;
     }
 
@@ -17,13 +19,13 @@ import java.util.Objects;
         this.idBrand = idBrand;
     }
 
-    @Basic @Column( name = "brand", nullable = false, length = 60 ) public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand( String brand ) {
-        this.brand = brand;
-    }
+//    @Basic @Column( name = "brand", nullable = false, length = 60 ) public String getBrand() {
+//        return brand;
+//    }
+//
+//    public void setBrand( String brand ) {
+//        this.brand = brand;
+//    }
 
     @Override public boolean equals( Object o ) {
         if ( this == o )
@@ -31,11 +33,11 @@ import java.util.Objects;
         if ( o == null || getClass() != o.getClass() )
             return false;
         BrandsEnt brandsEnt = (BrandsEnt) o;
-        return idBrand == brandsEnt.idBrand && Objects.equals( brand, brandsEnt.brand );
+        return idBrand == brandsEnt.idBrand && Objects.equals( productsByIdBrand, brandsEnt.productsByIdBrand );
     }
 
     @Override public int hashCode() {
-        return Objects.hash( idBrand, brand );
+        return Objects.hash( idBrand, productsByIdBrand );
     }
 
     @OneToMany( mappedBy = "brandsByIdBrand" ) public Collection<ProductsEnt> getProductsByIdBrand() {

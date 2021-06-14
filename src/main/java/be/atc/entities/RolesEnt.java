@@ -9,7 +9,9 @@ import java.util.Objects;
     private String               role;
     private Collection<UsersEnt> usersByIdRole;
 
-    @Id @Column( name = "ID_Role", nullable = false ) public int getIdRole() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_Role", nullable = false ) public int getIdRole() {
         return idRole;
     }
 

@@ -9,7 +9,9 @@ import java.util.Objects;
     private String                            category;
     private Collection<ProductsCategoriesEnt> productsCategoriesByIdCategorie;
 
-    @Id @Column( name = "ID_Categorie", nullable = false ) public int getIdCategorie() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_Categorie", nullable = false ) public int getIdCategorie() {
         return idCategorie;
     }
 

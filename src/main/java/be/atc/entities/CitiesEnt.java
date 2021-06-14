@@ -6,13 +6,15 @@ import java.util.Objects;
 
 @Entity @Table( name = "cities", schema = "stockmanagement", catalog = "" ) public class CitiesEnt {
     private int                    idCity;
-    private int                    idCountry;
+//    private int                    idCountry;
     private String                 citie;
     private int                    postalCode;
     private Collection<AddressEnt> addressesByIdCity;
     private CountriesEnt           countriesByIdCountry;
 
-    @Id @Column( name = "ID_City", nullable = false ) public int getIdCity() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_City", nullable = false ) public int getIdCity() {
         return idCity;
     }
 
@@ -20,13 +22,13 @@ import java.util.Objects;
         this.idCity = idCity;
     }
 
-    @Basic @Column( name = "ID_Country", nullable = false ) public int getIdCountry() {
-        return idCountry;
-    }
-
-    public void setIdCountry( int idCountry ) {
-        this.idCountry = idCountry;
-    }
+//    @Basic @Column( name = "ID_Country", nullable = false ) public int getIdCountry() {
+//        return idCountry;
+//    }
+//
+//    public void setIdCountry( int idCountry ) {
+//        this.idCountry = idCountry;
+//    }
 
     @Basic @Column( name = "citie", nullable = false, length = 60 ) public String getCitie() {
         return citie;
@@ -50,12 +52,14 @@ import java.util.Objects;
         if ( o == null || getClass() != o.getClass() )
             return false;
         CitiesEnt citiesEnt = (CitiesEnt) o;
-        return idCity == citiesEnt.idCity && idCountry == citiesEnt.idCountry && postalCode == citiesEnt.postalCode
-                && Objects.equals( citie, citiesEnt.citie );
+        return idCity == citiesEnt.idCity && postalCode == citiesEnt.postalCode && Objects
+                .equals( citie, citiesEnt.citie ) && Objects
+                .equals( addressesByIdCity, citiesEnt.addressesByIdCity ) && Objects
+                .equals( countriesByIdCountry, citiesEnt.countriesByIdCountry );
     }
 
     @Override public int hashCode() {
-        return Objects.hash( idCity, idCountry, citie, postalCode );
+        return Objects.hash( idCity, citie, postalCode, addressesByIdCity, countriesByIdCountry );
     }
 
     @OneToMany( mappedBy = "citiesByIdCity" ) public Collection<AddressEnt> getAddressesByIdCity() {

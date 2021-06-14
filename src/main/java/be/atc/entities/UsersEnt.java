@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity @Table( name = "users", schema = "stockmanagement", catalog = "" ) public class UsersEnt {
     private int                             idUser;
-    private int                             idRole;
+//    private int                             idRole;
     private String                          lastName;
     private String                          firstName;
     private Date                            dayOfBirth;
@@ -21,7 +21,9 @@ import java.util.Objects;
     private Collection<OrdersEnt>           ordersByIdUser;
     private RolesEnt                        rolesByIdRole;
 
-    @Id @Column( name = "ID_User", nullable = false ) public int getIdUser() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_User", nullable = false ) public int getIdUser() {
         return idUser;
     }
 
@@ -29,13 +31,13 @@ import java.util.Objects;
         this.idUser = idUser;
     }
 
-    @Basic @Column( name = "ID_Role", nullable = false ) public int getIdRole() {
-        return idRole;
-    }
-
-    public void setIdRole( int idRole ) {
-        this.idRole = idRole;
-    }
+//    @Basic @Column( name = "ID_Role", nullable = false ) public int getIdRole() {
+//        return idRole;
+//    }
+//
+//    public void setIdRole( int idRole ) {
+//        this.idRole = idRole;
+//    }
 
     @Basic @Column( name = "lastName", nullable = false, length = 60 ) public String getLastName() {
         return lastName;
@@ -107,17 +109,20 @@ import java.util.Objects;
         if ( o == null || getClass() != o.getClass() )
             return false;
         UsersEnt usersEnt = (UsersEnt) o;
-        return idUser == usersEnt.idUser && idRole == usersEnt.idRole && Objects
-                .equals( lastName, usersEnt.lastName ) && Objects.equals( firstName, usersEnt.firstName )
-                && Objects.equals( dayOfBirth, usersEnt.dayOfBirth ) && Objects
-                .equals( inscriptionDate, usersEnt.inscriptionDate ) && Objects.equals( vat, usersEnt.vat )
-                && Objects.equals( mail, usersEnt.mail ) && Objects
-                .equals( password, usersEnt.password ) && Objects.equals( login, usersEnt.login );
+        return idUser == usersEnt.idUser && Objects.equals( lastName, usersEnt.lastName ) && Objects
+                .equals( firstName, usersEnt.firstName ) && Objects.equals( dayOfBirth, usersEnt.dayOfBirth )
+                && Objects.equals( inscriptionDate, usersEnt.inscriptionDate ) && Objects
+                .equals( vat, usersEnt.vat ) && Objects.equals( mail, usersEnt.mail ) && Objects
+                .equals( password, usersEnt.password ) && Objects.equals( login, usersEnt.login )
+                && Objects.equals( adressUsersByIdUser, usersEnt.adressUsersByIdUser ) && Objects
+                .equals( commandsuppliersByIdUser, usersEnt.commandsuppliersByIdUser ) && Objects
+                .equals( ordersByIdUser, usersEnt.ordersByIdUser ) && Objects
+                .equals( rolesByIdRole, usersEnt.rolesByIdRole );
     }
 
     @Override public int hashCode() {
-        return Objects
-                .hash( idUser, idRole, lastName, firstName, dayOfBirth, inscriptionDate, vat, mail, password, login );
+        return Objects.hash( idUser, lastName, firstName, dayOfBirth, inscriptionDate, vat, mail, password, login,
+                adressUsersByIdUser, commandsuppliersByIdUser, ordersByIdUser, rolesByIdRole );
     }
 
     @OneToMany( mappedBy = "usersByIdUser" ) public Collection<AdressUsersEnt> getAdressUsersByIdUser() {

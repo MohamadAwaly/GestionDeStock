@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -19,13 +20,10 @@
     </tr>
     <c:forEach var="adresse" items="${adresse}">
         <tr>
-            <td><c:out value="${ adresse[0] } "/></td>
-            <td><c:out value="${ adresse[1] } "/></td>
-            <td><c:out value="${ adresse[2] } "/></td>
-            <td><c:out value="${ adresse[3] } "/></td>
-            <td><c:out value="${ adresse[4] }"/></td>
-            <td><c:out value="${ adresse[5] }"/></td>
-            <td><c:out value="${ adresse[6] }"/></td>
+            <td><c:out value="${ adresse.lastName } "/></td>
+            <td><c:out value="${ adresse.firstName } "/></td>
+            <td><c:out value="${ adresse.dayOfBirth } "/></td>
+
 
         </tr>
     </c:forEach>

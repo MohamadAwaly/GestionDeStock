@@ -5,15 +5,17 @@ import java.util.Objects;
 
 @Entity @Table( name = "orders_products", schema = "stockmanagement", catalog = "" ) public class OrdersProductsEnt {
     private int         idOrdersProducts;
-    private int         idOrder;
-    private int         idProduct;
+//    private int         idOrder;
+//    private int         idProduct;
     private int         qteUnits;
     private int         unitPrice;
     private Boolean     deliver;
     private OrdersEnt   ordersByIdOrder;
     private ProductsEnt productsByIdProduct;
 
-    @Id @Column( name = "ID_Orders_products", nullable = false ) public int getIdOrdersProducts() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_Orders_products", nullable = false ) public int getIdOrdersProducts() {
         return idOrdersProducts;
     }
 
@@ -21,21 +23,21 @@ import java.util.Objects;
         this.idOrdersProducts = idOrdersProducts;
     }
 
-    @Basic @Column( name = "ID_Order", nullable = false ) public int getIdOrder() {
-        return idOrder;
-    }
-
-    public void setIdOrder( int idOrder ) {
-        this.idOrder = idOrder;
-    }
-
-    @Basic @Column( name = "ID_Product", nullable = false ) public int getIdProduct() {
-        return idProduct;
-    }
-
-    public void setIdProduct( int idProduct ) {
-        this.idProduct = idProduct;
-    }
+//    @Basic @Column( name = "ID_Order", nullable = false ) public int getIdOrder() {
+//        return idOrder;
+//    }
+//
+//    public void setIdOrder( int idOrder ) {
+//        this.idOrder = idOrder;
+//    }
+//
+//    @Basic @Column( name = "ID_Product", nullable = false ) public int getIdProduct() {
+//        return idProduct;
+//    }
+//
+//    public void setIdProduct( int idProduct ) {
+//        this.idProduct = idProduct;
+//    }
 
     @Basic @Column( name = "qteUnits", nullable = false ) public int getQteUnits() {
         return qteUnits;
@@ -67,13 +69,14 @@ import java.util.Objects;
         if ( o == null || getClass() != o.getClass() )
             return false;
         OrdersProductsEnt that = (OrdersProductsEnt) o;
-        return idOrdersProducts == that.idOrdersProducts && idOrder == that.idOrder && idProduct == that.idProduct
-                && qteUnits == that.qteUnits && unitPrice == that.unitPrice && Objects
-                .equals( deliver, that.deliver );
+        return idOrdersProducts == that.idOrdersProducts && qteUnits == that.qteUnits && unitPrice == that.unitPrice
+                && Objects.equals( deliver, that.deliver ) && Objects
+                .equals( ordersByIdOrder, that.ordersByIdOrder ) && Objects
+                .equals( productsByIdProduct, that.productsByIdProduct );
     }
 
     @Override public int hashCode() {
-        return Objects.hash( idOrdersProducts, idOrder, idProduct, qteUnits, unitPrice, deliver );
+        return Objects.hash( idOrdersProducts, qteUnits, unitPrice, deliver, ordersByIdOrder, productsByIdProduct );
     }
 
     @ManyToOne @JoinColumn( name = "ID_Order", referencedColumnName = "ID_Order", nullable = false ) public OrdersEnt getOrdersByIdOrder() {

@@ -7,14 +7,16 @@ import java.util.Objects;
 
 @Entity @Table( name = "commandsuppliers", schema = "stockmanagement", catalog = "" ) public class CommandsuppliersEnt {
     private int                                   idCommandSuppliers;
-    private int                                   idSupplier;
-    private int                                   idUser;
+//    private int                                   idSupplier;
+//    private int                                   idUser;
     private Date                                  orderDate;
     private SuppliersEnt                          suppliersByIdSupplier;
     private UsersEnt                              usersByIdUser;
     private Collection<CommandsuppliersBatchsEnt> commandsuppliersBatchsByIdCommandSuppliers;
 
-    @Id @Column( name = "ID_CommandSuppliers", nullable = false ) public int getIdCommandSuppliers() {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column( name = "ID_CommandSuppliers", nullable = false ) public int getIdCommandSuppliers() {
         return idCommandSuppliers;
     }
 
@@ -22,21 +24,21 @@ import java.util.Objects;
         this.idCommandSuppliers = idCommandSuppliers;
     }
 
-    @Basic @Column( name = "ID_Supplier", nullable = false ) public int getIdSupplier() {
-        return idSupplier;
-    }
-
-    public void setIdSupplier( int idSupplier ) {
-        this.idSupplier = idSupplier;
-    }
-
-    @Basic @Column( name = "ID_User", nullable = false ) public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser( int idUser ) {
-        this.idUser = idUser;
-    }
+//    @Basic @Column( name = "ID_Supplier", nullable = false ) public int getIdSupplier() {
+//        return idSupplier;
+//    }
+//
+//    public void setIdSupplier( int idSupplier ) {
+//        this.idSupplier = idSupplier;
+//    }
+//
+//    @Basic @Column( name = "ID_User", nullable = false ) public int getIdUser() {
+//        return idUser;
+//    }
+//
+//    public void setIdUser( int idUser ) {
+//        this.idUser = idUser;
+//    }
 
     @Basic @Column( name = "orderDate", nullable = false ) public Date getOrderDate() {
         return orderDate;
@@ -52,12 +54,15 @@ import java.util.Objects;
         if ( o == null || getClass() != o.getClass() )
             return false;
         CommandsuppliersEnt that = (CommandsuppliersEnt) o;
-        return idCommandSuppliers == that.idCommandSuppliers && idSupplier == that.idSupplier && idUser == that.idUser
-                && Objects.equals( orderDate, that.orderDate );
+        return idCommandSuppliers == that.idCommandSuppliers && Objects.equals( orderDate, that.orderDate )
+                && Objects.equals( suppliersByIdSupplier, that.suppliersByIdSupplier ) && Objects
+                .equals( usersByIdUser, that.usersByIdUser ) && Objects
+                .equals( commandsuppliersBatchsByIdCommandSuppliers, that.commandsuppliersBatchsByIdCommandSuppliers );
     }
 
     @Override public int hashCode() {
-        return Objects.hash( idCommandSuppliers, idSupplier, idUser, orderDate );
+        return Objects.hash( idCommandSuppliers, orderDate, suppliersByIdSupplier, usersByIdUser,
+                commandsuppliersBatchsByIdCommandSuppliers );
     }
 
     @ManyToOne @JoinColumn( name = "ID_Supplier", referencedColumnName = "ID_Supplier", nullable = false ) public SuppliersEnt getSuppliersByIdSupplier() {
