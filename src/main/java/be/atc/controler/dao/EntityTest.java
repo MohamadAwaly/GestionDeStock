@@ -1,6 +1,7 @@
 package be.atc.controler.dao;
 
 import be.atc.entities.UsersEnt;
+import be.atc.service.UserService;
 import org.apache.log4j.Level;
 
 import javax.persistence.EntityManager;
@@ -10,6 +11,9 @@ import java.util.List;
 public class EntityTest {
     final static org.apache.log4j.Logger logger = org.apache.log4j.Logger
             .getLogger( EntityTest.class );
+
+    UsersEnt user = new UserService();
+    UsersEnt userTest = user.
 
     public List<UsersEnt> listDesPersonnes() {
         List<UsersEnt> user = new ArrayList<>();
@@ -23,4 +27,5 @@ public class EntityTest {
         }
         return user;
     }
+
 }

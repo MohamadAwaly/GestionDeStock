@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
+@NamedQueries(value = {
+@NamedQuery(name = "User.findall",
+query = "SELECT u FROM UsersEnt u")
+} )
 
 @Entity @Table( name = "users", schema = "stockmanagement", catalog = "" ) public class UsersEnt {
     private int                             idUser;

@@ -14,8 +14,8 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
 <%--    <link type="text/css" rel="stylesheet" href="../resources/css/allCss.css">--%>
-<%--    <script type="text/javascript" src="../resources/js/script.js"></script>--%>
-<%--    <script type="text/javascript" src="../resources/js/jquery-3.5.1.js"></script>--%>
+    <script type="text/javascript" src="../resources/js/script.js"></script>
+    <script type="text/javascript" src="../resources/js/jquery-3.5.1.js"></script>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"

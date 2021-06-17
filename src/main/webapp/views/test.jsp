@@ -35,7 +35,6 @@
             <td><c:out value="${ adresse.vat } "/></td>
             <td><c:out value="${ adresse.mail } "/></td>
             <td><c:out value="${ adresse.password } "/></td>
-
         </tr>
     </c:forEach>
     </tbody>
